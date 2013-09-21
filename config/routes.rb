@@ -1,4 +1,8 @@
 Uni::Application.routes.draw do
+  get "welcome/index" => "welcome#index"
+  root to: "welcome#index" 
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
