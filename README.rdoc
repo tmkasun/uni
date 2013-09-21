@@ -3,25 +3,27 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+# FIT Student information system
 
-* Ruby version
+Students of faculty of infomation technology university of moratuwa can access to their friends information via this system
 
-* System dependencies
+## Installation
 
-* Configuration
+Clone this repo
 
-* Database creation
+    git clone git@github.com:tmkasun/uni.git
 
-* Database initialization
+And then execute:
 
-* How to run the test suite
+    $ bundle
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
-
-* ...
+    Fork it
+    Create your feature branch (git checkout -b my-new-feature)
+    Commit your changes (git commit -am 'Add some feature')
+    Push to the branch (git push origin my-new-feature)
+    Create new Pull Request
 
 
 Please feel free to use a different markup language if you do not plan to run
