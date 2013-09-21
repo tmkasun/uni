@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title><%= @page_title ||= 'SiS' %></title>
+		<%= javascript_include_tag "application" %>
+		<%= stylesheet_link_tag "globalFrameStyle","headerStyles","apista_controller","interior_design_styles" %>
+		<%= yield :head %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
+		<div class="header">
+			<div class="wrapper">
+				<%= link_to root_path do%>
+				<h3>Students info system</h3>
+				<% end %>
+				<%= link_to("Settings",{:controller => "users" ,:action => "settings"}, :class => "settings_button") %>
+				<%= link_to("Logout",{:controller => "sessions" ,:action => "destroy", id: current_user.id},method: :delete, :class => "settings_button blue") unless current_user.nil? %>
+			</div>
+		</div>
+		<div id="global_navigations_div" class="wrapper">
+			<div class="navigation_buttons"> add any</div>
+			
+		</div>
+		<hr />
+		<div class="wrapper" style="margin-bottom: 50px;">
+			<% if flash[:message] %>
+			<div class="flash_message_div">
+				<label style="color: red">Message: <%= flash[:message]%></label>
+			</div>
+			<% end %>
+			<%= yield %>
+		</div>
+
+	</body>
+</html>
+
+<% if false %>
+Other notes
+---link_to with h1---
+http://stackoverflow.com/questions/1086360/how-do-i-wrap-link-to-around-some-html-ruby-code
+<% end %>
+

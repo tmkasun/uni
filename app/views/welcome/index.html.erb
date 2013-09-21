@@ -1,46 +1,23 @@
 <% stylesheet_link_tag 'welcome'  %>
+<%= link_to  "Sign up!" , :new_user %>
+<h2 align = "center" > Welcome to SiS </h2>
 
-<p align = "center" ><b><a style="font-size: 18pt;color: #152338;">Welcome to S</a><a style="font-size: 18pt;color: #771A1D;">i</a><a style="font-size: 18pt;color: #152338;">S</a></b></p>
-<div align = "center" width = "50%">
-	<br/>
- 
-		</div>
+<div id= "loging_div" >
 
-<div id= "loging_div" style="position: relative;margin: 0px auto;text-align: center;width: 40%;box-shadow: 0px 10px 30px 1px #181B21;border-radius:10px;padding-bottom: 5%;" >
+	<% if flash[:notice]%>
+	<%= flash[:notice]%>
+	<% else %>
+	<h2 id="Sign_in" >Sign in</h2>
+	<%= form_tag sessions_path do |f| %>
+	<%= f.class %>
+	<%= label_tag :email %>
+	<%= text_field_tag :email %>
 	
-	<h1 id="Sign_in" >Sign in</h1>
-	<form id="login_form" name = "sign" action = "signin.php" method = "post" >
-		 <p>
-			<a id="reg_number" style="float: left">Registration Number</a> <textarea id="fit11" style="position: relative;float: right;resize: none;border: 0;color: #633201;text-shadow: 0 1px 2px rgba(239, 177, 31, 0.5);overflow: hidden;" rows="5" cols="12">
-╭━━┳┳━━┳╮╱╭╮
-┃━┳╋╋╮╭╯┃╭╯┃
-┃╭╯┃┃┃┣╮┃╰╮┃
-╰╯╱╰╯╰╯┃┃╱┃┃
-╱╱╱╱╱╱╭╯╰┳╯╰╮
-</textarea>
-			<br/><br/>
-	        <input onkeyup="chek(this)" type="text" id="login" name = "username" required="required" placeholder="11XXXXX" autofocus style="float: left;border: 1px groove #47A0D3;border-radius: 5px;margin: 0;padding: 5px;"/>
-			<br/><br/>
-			<a id="pass" style="float: left">Password</a>
-			<br/><br/>
-		<input type="password" name="password" id="password" required="required" placeholder="Password" style="float: left;border: 1px groove #47A0D3;border-radius: 5px;margin: 0;padding: 5px;"/> 
-			
-		 </p>
-		<!-- input type = "submit"  style="visibility: hidden;"/ --> 
-	    <button type="button" id="submit_button" name="submit" class="def_button" target = "_self" onclick="ajax_signin()" >
-        <img id="error" style="text-align:right;" width="16" height="16" style="border: 0px;"></img>
-        <span>Sign in</span>
-	    </button>     
-	</form>
-	
-	
+	<%= label_tag :password %>
+	<%= password_field_tag :password %>
+	<%= submit_tag "Log in"%>
+	<% end %>
+	<% end %>
+</div>
 
-								
-						
-
-	
-												
-								</div>	
-
-<a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.1.4.1 </a>  <a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ -->
-</a>
+<a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.1.4.1 </a><a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ --> </a>

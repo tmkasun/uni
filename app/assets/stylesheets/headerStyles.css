@@ -1,0 +1,25 @@
+.header {
+	background: #eeeeee;
+	margin-top: 0px;
+	border: 0px;
+	width: 100%;
+	height: 56px;
+}
+.wrapper h3 {
+	margin: 0px;
+	float: left;
+	margin-top: 12px;
+}
+.wrapper {
+	/*background: red;   this is for identify the div position */
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.settings_button {
+	float: right;
+	cursor: pointer;
+	margin-top: 15px;
+	text-decoration: none;
+	color: #000000;
+}
