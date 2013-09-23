@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts "seeding data into database \n"
+dump_file = File.open("#{Rails.root}/test/fixtures/b11.yml")
+yaml_file = YAML::load_file(dump_file)
+
+yaml_file.each do |record|
+  Student.create :registration_number => record["reg_number"]
+end

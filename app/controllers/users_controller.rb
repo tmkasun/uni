@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     #render text: allowed_params 
     @user = User.create(allowed_params)
     unless @user.errors.any?
-      redirect_to :welcome_index , notice: "successfully signed up !"
+      redirect_to :welcome , notice: "successfully signed up !"
     else
       flash[:message] = @user.errors.full_messages
       render "new"

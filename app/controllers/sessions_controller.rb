@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       flash[:message] = "Thank you for loging to SiS!"
       redirect_to  searches_url 
     else
-      render text: "@user.errors."
+      flash[:notice] = "Can't find #{params[:email]}"
+      render welcome_path
     end
   end
   

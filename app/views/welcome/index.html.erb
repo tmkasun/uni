@@ -9,13 +9,13 @@
 	<% else %>
 	<h2 id="Sign_in" >Sign in</h2>
 	<%= form_tag sessions_path do |f| %>
-	<%= f.class %>
 	<%= label_tag :email %>
-	<%= text_field_tag :email %>
-	
+	<%= text_field_tag :email , nil ,class: "general_input_box" %>
+	<br />
 	<%= label_tag :password %>
-	<%= password_field_tag :password %>
-	<%= submit_tag "Log in"%>
+	<%= password_field_tag :password, nil  , class: "general_input_box" %>
+	<br />
+	<%= submit_tag "Log in" , class: "blue"%>
 	<% end %>
 	<% end %>
 </div>
