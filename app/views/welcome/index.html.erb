@@ -1,23 +1,41 @@
-<% stylesheet_link_tag 'welcome'  %>
-<%= link_to  "Sign up!" , :new_user %>
 <h2 align = "center" > Welcome to SiS </h2>
 
-<div id= "loging_div" >
+<div class="container row-fluid" >
 
-	<% if flash[:notice]%>
-	<%= flash[:notice]%>
-	<% else %>
-	<h2 id="Sign_in" >Sign in</h2>
-	<%= form_tag sessions_path do |f| %>
-	<%= label_tag :email %>
-	<%= text_field_tag :email , nil ,class: "general_input_box" %>
-	<br />
-	<%= label_tag :password %>
-	<%= password_field_tag :password, nil  , class: "general_input_box" %>
-	<br />
-	<%= submit_tag "Log in" , class: "blue"%>
-	<% end %>
-	<% end %>
+	<div class="span9" style="margin-left: 100px;">
+		<div class="row-fluid">
+			<div class="span6 loging_n_register_div">
+				<h2 id="Sign_in" >Sign in</h2>
+				<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
+				<div class="control-group">
+					<%= label_tag :email, nil, class: "control-label" %>
+					<div class="controls">
+						<%= text_field_tag :email  %>
+						<br />
+					</div>
+				</div>
+
+				<div class="control-group">
+
+					<%= label_tag :password,nil, class: "control-label" %>
+					<div class="controls">
+						<%= password_field_tag :password %>
+						<br />
+					</div>
+				</div>
+				<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
+
+				<% end %>
+			</div>
+			<div class="span6 loging_n_register_div" style="text-align: center">
+				<%= link_to  "Register", nil, class: "btn btn-primary disabled" %> <!-- :new_user -->
+			</div>
+
+			<%= flash[:notice] if flash[:notice]%>
+
+		</div>
+
+	</div>
 </div>
 
 <a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.1.4.1 </a><a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ --> </a>
