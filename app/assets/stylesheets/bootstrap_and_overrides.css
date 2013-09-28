@@ -8,7 +8,7 @@
 
 #signin {
 	float: right;
-	/*margin-right: 40%;*/
+	margin-right: 40%;
 }
 
 .loging_n_register_div {
@@ -20,7 +20,7 @@
 }
 
 .center {
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
 }

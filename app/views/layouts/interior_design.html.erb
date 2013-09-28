@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><%= @page_title ||= 'SiS' %></title>
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-		<%= stylesheet_link_tag "globalFrameStyle","headerStyles","apista_controller","interior_design_styles","application", media: "all", "data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 		<%= yield :head %>
 		<%= csrf_meta_tag %>
 	</head>
@@ -94,9 +94,10 @@
 
 		</div>
 		<hr />
+
 		<div class="wrapper" style="margin-bottom: 50px;">
 			<% if flash[:message] %>
-			<div class="flash_message_div">
+			<div class="alert">
 				<label style="color: red">Message: <%= flash[:message]%></label>
 			</div>
 			<% end %>

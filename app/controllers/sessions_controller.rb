@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    logouted_user = current_user.email
     session[:user_id]  = nil
-    render text: "done#{session[:user_id]}"
+    redirect_to  root_path,notice: "You've(#{logouted_user}) signed out. See you again soon!"
   end
 end
