@@ -4,24 +4,94 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><%= @page_title ||= 'SiS' %></title>
-		<%= javascript_include_tag "application" %>
-		<%= stylesheet_link_tag "globalFrameStyle","headerStyles","apista_controller","interior_design_styles" %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag "globalFrameStyle","headerStyles","apista_controller","interior_design_styles","application", media: "all", "data-turbolinks-track" => true %>
 		<%= yield :head %>
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
-		<div class="header">
-			<div class="wrapper">
-				<%= link_to root_path do%>
-				<h3>Students info system</h3>
-				<% end %>
-				<%= link_to("Settings",{:controller => "users" ,:action => "settings"}, :class => "settings_button") %>
-				<%= link_to("Logout",{:controller => "sessions" ,:action => "destroy", id: current_user.id},method: :delete, :class => "settings_button blue") unless current_user.nil? %>
+		<% if false%>
+
+		<%= link_to root_path do%>
+		<h3>Students info system</h3>
+		<% end %>
+		<%= link_to("Settings",{:controller => "users" ,:action => "settings"}, :class => "settings_button") %>
+
+		<% end %>
+
+		<div class="container">
+			<div class="navbar ">
+				<div class="navbar-inner">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">Home</a>
+						</li>
+						<li>
+							<%= link_to :Link%>
+						</li>
+						<li>
+							<%= link_to :Link%>
+						</li>
+
+					</ul>
+
+					<ul class="nav pull-right">
+						<a class="brand" style="float: left;font-size: 12pt;" href="#"><%= current_user.email %></a>
+
+						<li class="divider-vertical">
+							<%= link_to("Logout",{:controller => "sessions" ,:action => "destroy", id: current_user.id},method: :delete) unless current_user.nil? %>
+
+						</li>
+
+					</ul>
+
+				</div>
 			</div>
 		</div>
+
+		<div class="container pull-left">
+			<div class="navbar navbar-fixed-bottom">
+				<div class="navbar-inner">
+					<ul class="nav" style="margin-left: 25%;">
+						<li>
+							<a href="#" >&copy; 2013 SiS</a>
+
+						</li>
+						<li>
+							<a href="/about">About</a>
+						</li>
+						<li>
+							<a href="/about/contact">Contact</a>
+						</li>
+						<li>
+							<a href="#">Blog</a>
+						</li>
+						<li>
+							<a href="http://status.uni.knnect.com">Status</a>
+						</li>
+						<li>
+							<a href="//dev.uni.knnect.com/">API</a>
+						</li>
+						<li>
+							<a href="#">Help</a>
+						</li>
+						<li>
+							<a href="/tos">Terms</a>
+						</li>
+						<li>
+							<a href="/privacy">Privacy</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
 		<div id="global_navigations_div" class="wrapper">
-			<div class="navigation_buttons"> add any</div>
-			
+			<div class="navigation_buttons">
+				add any
+			</div>
+
 		</div>
 		<hr />
 		<div class="wrapper" style="margin-bottom: 50px;">
@@ -32,27 +102,6 @@
 			<% end %>
 			<%= yield %>
 		</div>
-
-<div class="round wide" id="footer">
-      <h3 class="offscreen">Footer</h3>
-      
-      
-      <ul class="footer-nav">
-          <li class="first">&copy; 2013 Twitter</li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/about/contact">Contact</a></li>
-          <li><a href="http://blog.twitter.com">Blog</a></li>
-          <li><a href="http://status.twitter.com">Status</a></li>
-                      <li><a href="/about/resources">Resources</a></li>
-                    <li><a href="//dev.twitter.com/">API</a></li>
-                      <li><a href="//business.twitter.com/index_en.html">Business</a></li>
-                    <li><a href="//support.twitter.com">Help</a></li>
-          <li><a href="/help/jobs">Jobs</a></li>
-          <li><a href="/tos">Terms</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-      </ul>
-  </div>
-
 
 	</body>
 </html>

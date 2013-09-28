@@ -1,40 +1,41 @@
 <h2 align = "center" > Welcome to SiS </h2>
 
-<div class="container row-fluid" >
-
-	<div class="span9" style="margin-left: 100px;">
-		<div class="row-fluid">
-			<div class="span6 loging_n_register_div">
-				<h2 id="Sign_in" >Sign in</h2>
-				<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
-				<div class="control-group">
-					<%= label_tag :email, nil, class: "control-label" %>
-					<div class="controls">
-						<%= text_field_tag :email  %>
-						<br />
-					</div>
+<% if flash[:notice]%>
+<div class="alert">
+	<button type="button" class="close" data-dismiss="alert">
+		&times;
+	</button>
+	<strong> <%= flash[:notice] %> </strong>
+</div>
+<% end %>
+<div class="span9" style="margin-left: 25%;" >
+	<div class="row-fluid">
+		<div class="span6 loging_n_register_div">
+			<h2 id="Sign_in" >Sign in</h2>
+			<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
+			<div class="control-group">
+				<%= label_tag :email, nil, class: "control-label" %>
+				<div class="controls">
+					<%= text_field_tag :email  %>
+					<br />
 				</div>
-
-				<div class="control-group">
-
-					<%= label_tag :password,nil, class: "control-label" %>
-					<div class="controls">
-						<%= password_field_tag :password %>
-						<br />
-					</div>
-				</div>
-				<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
-
-				<% end %>
-			</div>
-			<div class="span6 loging_n_register_div" style="text-align: center">
-				<%= link_to  "Register", nil, class: "btn btn-primary disabled" %> <!-- :new_user -->
 			</div>
 
-			<%= flash[:notice] if flash[:notice]%>
+			<div class="control-group">
 
+				<%= label_tag :password,nil, class: "control-label" %>
+				<div class="controls">
+					<%= password_field_tag :password %>
+					<br />
+				</div>
+			</div>
+			<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
+
+			<% end %>
 		</div>
-
+		<div class="span6 loging_n_register_div" style="text-align: center;margin-left: 0px;height: 150px;">
+			<%= link_to  "Register", nil, class: "btn btn-primary disabled" %> <!-- :new_user -->
+		</div>
 	</div>
 </div>
 
