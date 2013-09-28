@@ -17,4 +17,10 @@
 	border: 1px solid #DDDDDD;
 	border-radius: 6px 6px 6px 6px;
 	box-shadow: 4px 4px 1px #EEEEEE;
-	}
+}
+
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}

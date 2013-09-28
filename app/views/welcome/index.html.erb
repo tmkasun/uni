@@ -8,9 +8,10 @@
 	<strong> <%= flash[:notice] %> </strong>
 </div>
 <% end %>
-<div class="span9" style="margin-left: 25%;" >
+<div class="span9 offset3" >
 	<div class="row-fluid">
-		<div class="span6 loging_n_register_div">
+		<!-- text-center -->
+		<div class="span6 loging_n_register_div center">
 			<h2 id="Sign_in" >Sign in</h2>
 			<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
 			<div class="control-group">
@@ -33,9 +34,7 @@
 
 			<% end %>
 		</div>
-		<div class="span6 loging_n_register_div" style="text-align: center;margin-left: 0px;height: 150px;">
-			<%= link_to  "Register", nil, class: "btn btn-primary disabled" %> <!-- :new_user -->
-		</div>
+		
 	</div>
 </div>
 
