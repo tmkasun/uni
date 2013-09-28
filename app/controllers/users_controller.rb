@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "interior_design"
+  #layout "interior_design" #FIXME , temporaly removed coz current_user nil class error in layouts
   def new
     @user = User.new
   end
