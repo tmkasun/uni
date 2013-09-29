@@ -1,10 +1,10 @@
 Uni::Application.routes.draw do
-  get "welcome/index" => "welcome#index", as: "welcome"
+  get "welcome/" => "welcome#index", as: "welcome"
   root to: "welcome#index"
   resources :users
   resources :sessions
   
-  get "searches/index" => "searches#index" , as: "searches"
+  get "searches/" => "searches#index" , as: "searches"
   get "users/new" => "users#new" , as: "sign_up" 
   
   get "users/:action" => "users#:action" # this is temporaly
