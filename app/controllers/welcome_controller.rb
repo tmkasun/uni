@@ -7,4 +7,9 @@ class WelcomeController < ApplicationController
   def tos
     
   end
+  
+  #tempory def need to remove
+  def cisco
+    
+  end
 end
