@@ -6,7 +6,7 @@ Uni::Application.routes.draw do
   
   get "searches/" => "searches#index" , as: "searches"
   get "users/new" => "users#new" , as: "sign_up" 
-  
+  get "tos/"   => "welcome#tos", as: "terms"
   get "users/:action" => "users#:action" # this is temporaly
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
