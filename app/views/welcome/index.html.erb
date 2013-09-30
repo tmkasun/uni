@@ -11,6 +11,7 @@
 	<div class="row">
 		<!-- text-center -->
 		<div class="span6 loging_n_register_div">
+			<h4 class="shadow" style="text-align: center;">Sign in</h4>
 
 			<% if flash[:notice]%>
 			<div class="alert">
@@ -21,7 +22,6 @@
 			</div>
 			<% end %>
 
-			<h4 class="shadow" style="text-align: center;">Sign in</h4>
 			<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
 			<div class="control-group input-append">
 				<%= label_tag :email, nil, class: "control-label" %>
@@ -43,6 +43,7 @@
 			<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
 
 			<% end %>
+
 		</div>
 
 	</div>
