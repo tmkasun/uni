@@ -1,31 +1,33 @@
-<% content_for :head do %>
-<title> Student information system for University of moratuwa FIT (Batch 11) </title>
+<% content_for :head do %> <title> Student information system for University of moratuwa FIT (Batch 11) </title>
 <meta name="description" content="Student information system for university of moratuwa FIT batch 11 , This service is only for informative pupose.Self learning project by Kasun Thennakoon and Dinuka Mihiran" />
 <meta name="keywords" content="student information, moratuwa, batch ,registration number, phone number, gpa, kasun thennakoon " />
 <% end %>
 
 <div class="center">
-	<h2 > Welcome to SiS </h2>
+	<h3 class="shadow" > Welcome to Student information system </h3>
 </div>
 
-<% if flash[:notice]%>
-<div class="alert">
-	<button type="button" class="close" data-dismiss="alert">
-		&times;
-	</button>
-	<strong> <%= flash[:notice] %> </strong>
-</div>
-<% end %>
-<div class="span9 offset3" >
-	<div class="row-fluid">
+<div class="container center" >
+	<div class="row">
 		<!-- text-center -->
-		<div class="span6 loging_n_register_div center">
-			<h2 id="Sign_in" >Sign in</h2>
+		<div class="span6 loging_n_register_div">
+
+			<% if flash[:notice]%>
+			<div class="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					&times;
+				</button>
+				<strong> <%= flash[:notice] %> </strong>
+			</div>
+			<% end %>
+
+			<h4 class="shadow" style="text-align: center;">Sign in</h4>
 			<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
-			<div class="control-group">
+			<div class="control-group input-append">
 				<%= label_tag :email, nil, class: "control-label" %>
 				<div class="controls">
-					<%= text_field_tag :email  %>
+					<%= text_field_tag :email , nil, placeholder: "Index number" %>
+					<span class="add-on">@uom.lk</span>
 					<br />
 				</div>
 			</div>
@@ -34,7 +36,7 @@
 
 				<%= label_tag :password,nil, class: "control-label" %>
 				<div class="controls">
-					<%= password_field_tag :password %>
+					<%= password_field_tag :password ,nil, placeholder: "Password" %>
 					<br />
 				</div>
 			</div>
@@ -47,3 +49,4 @@
 </div>
 
 <a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.1.4.1 </a><a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ --> </a>
+
