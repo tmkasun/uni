@@ -2,9 +2,9 @@ Uni::Application.routes.draw do
   get "welcome/" => "welcome#index", as: "welcome"
   root to: "welcome#index"
   resources :users
-  resources :sessions
   get "cisco/" => "welcome#cisco" #tempory route need to remove
-  
+
+  resources :sessions
   get "searches/" => "searches#index" , as: "searches"
   get "users/new" => "users#new" , as: "sign_up" 
   get "tos/"   => "welcome#tos", as: "terms"
