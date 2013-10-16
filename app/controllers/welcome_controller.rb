@@ -8,8 +8,4 @@ class WelcomeController < ApplicationController
     
   end
   
-  #tempory def need to remove
-  def cisco
-    
-  end
 end

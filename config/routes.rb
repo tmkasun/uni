@@ -1,9 +1,9 @@
 Uni::Application.routes.draw do
+  devise_for :users , :controllers => { :sessions => "create"}
   get "welcome/" => "welcome#index", as: "welcome"
   root to: "welcome#index"
   resources :users
-  get "cisco/" => "welcome#cisco" #tempory route need to remove
-
+ 
   resources :sessions
   get "searches/" => "searches#index" , as: "searches"
   get "users/new" => "users#new" , as: "sign_up" 

@@ -15,6 +15,8 @@ gem 'therubyracer'
 #gem 'sqlite3'
 gem 'mysql2'
 
+gem 'devise' #Devise is a flexible authentication solution for Rails based on Warden. It:
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
