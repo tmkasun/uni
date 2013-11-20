@@ -3,4 +3,7 @@ class SessionsController < ApplicationController
     render :text => 'oks'
   end
 
+  def sign_in
+    render :text => 'lahola'
+  end
 end

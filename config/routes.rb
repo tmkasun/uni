@@ -1,5 +1,5 @@
 Uni::Application.routes.draw do
-  devise_for :users , :controllers => { :sessions => "create"}
+  devise_for :users 
   get "welcome/" => "welcome#index", as: "welcome"
   root to: "welcome#index"
   resources :users
