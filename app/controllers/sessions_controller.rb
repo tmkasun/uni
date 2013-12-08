@@ -1,9 +1,4 @@
 class SessionsController < ApplicationController
-  def create
-    render :text => 'oks'
-  end
-
-  def sign_in
-    render :text => 'lahola'
-  end
+  
+  #skip_before_filter :verify_authenticity_token, only: :destroynd
 end

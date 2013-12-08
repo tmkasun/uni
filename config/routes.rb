@@ -1,11 +1,13 @@
 Uni::Application.routes.draw do
-  devise_for :users 
-  get "welcome/" => "welcome#index", as: "welcome"
-  root to: "welcome#index"
+  devise_for :users , :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => "register"}
+  root :to =>  "welcome#index"
+  #match "sessions#user" ,as: "sessions#create"
+  #get "welcome/" => "welcome#index", as: "welcome"
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
   resources :users
- 
   resources :sessions
-  get "searches/" => "searches#index" , as: "searches"
   get "users/new" => "users#new" , as: "sign_up" 
   get "tos/"   => "welcome#tos", as: "terms"
   get "users/:action" => "users#:action" # this is temporaly

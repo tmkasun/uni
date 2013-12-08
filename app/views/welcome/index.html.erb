@@ -1,53 +1,6 @@
-<% content_for :head do %> <title> Student information system for University of moratuwa FIT (Batch 11) </title>
-<meta name="description" content="Student information system for Batch 11 .Self learning project by B11 Group" />
-<meta name="keywords" content="student information, moratuwa, batch ,registration number, phone number, gpa, " />
-<% end %>
 
-<div class="center">
-	<h3 class="shadow" > Welcome to Student information system </h3>
-</div>
+<% @latest_batch_messages.each do |message| %>
+<%= message.text%>
+<br />
 
-<div class="container center" >
-	<div class="row">
-		<!-- text-center -->
-		<div class="span6 loging_n_register_div">
-			<h4 class="shadow" style="text-align: center;">Sign in</h4>
-
-			<% if flash[:notice]%>
-			<div class="alert">
-				<button type="button" class="close" data-dismiss="alert">
-					&times;
-				</button>
-				<strong> <%= flash[:notice] %> </strong>
-			</div>
-			<% end %>
-
-			<%= form_tag sessions_path, class: "form-horizontal" do |f| %>
-			<div class="control-group input-append">
-				<%= label_tag :registration_number, nil, class: "control-label" %>
-				<div class="controls">
-					<%= text_field_tag :registration_number , nil, placeholder: "Index number" %>
-					
-					<br />
-				</div>
-			</div>
-
-			<div class="control-group">
-
-				<%= label_tag :password,nil, class: "control-label" %>
-				<div class="controls">
-					<%= password_field_tag :password ,nil, placeholder: "Password" %>
-					<br />
-				</div>
-			</div>
-			<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
-
-			<% end %>
-
-		</div>
-
-	</div>
-</div>
-
-<a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.1.4.1 </a><a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ --> </a>
-
+<%end%>

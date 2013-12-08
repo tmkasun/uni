@@ -37,10 +37,10 @@
 					</ul>
 
 					<ul class="nav pull-right">
-						<a class="brand" style="float: left;font-size: 12pt;" href="#"><%= current_user.email %></a>
+						<a class="brand" style="float: left;font-size: 12pt;" href="#"><%= current_user.registration_number %></a>
 
 						<li class="divider-vertical">
-							<%= link_to("Logout",{:controller => "sessions" ,:action => "destroy", id: current_user.id},method: :delete) unless current_user.nil? %>
+							<%= link_to("Logout",destroy_user_session_path, :method => :delete) unless current_user.nil? %>
 
 						</li>
 
@@ -90,7 +90,7 @@
 
 		<div id="global_navigations_div" class="wrapper">
 			<div class="navigation_buttons">
-				add any
+				
 			</div>
 
 		</div>
