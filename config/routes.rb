@@ -1,4 +1,6 @@
 Uni::Application.routes.draw do
+  resources :students
+
   devise_for :users , :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => "register"}
   root :to =>  "welcome#index"
   #match "sessions#user" ,as: "sessions#create"
