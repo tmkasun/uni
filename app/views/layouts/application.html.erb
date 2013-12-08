@@ -2,16 +2,13 @@
 <html>
 	<head>
 		<%= favicon_link_tag "fav/favicon.ico"%>
-		<%= stylesheet_link_tag    "application","kasun_styles", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "application", "kasun_scripts","data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application","data-turbolinks-track" => true %>
 		<%= csrf_meta_tags %>
 		<%= yield :head%>
 		<meta charset="UTF-8">
 	</head>
 	<body>
-
-       
-
 		<%= yield %>
 
 	</body>
