@@ -14,7 +14,7 @@ Uni::Application.routes.draw do
   get 'dictionary' => 'features#dictionary'
   get 'education' => 'features#education'
   get 'batch_messages' => 'features#batch_messages'
-  get 'dictionary' => 'features#foo'
+  get 'gpa' => 'features#gpa'
 
   end
   
