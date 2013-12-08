@@ -19,32 +19,32 @@
 		<%= link_to("Settings",{:controller => "users" ,:action => "settings"}, :class => "settings_button") %>
 
 		<% end %>
-		
+
 		<div class="container" style="position: fixed;top: 0px;left: 0px;right: 0px;">
 			<div class="navbar ">
 				<div class="navbar-inner ">
 					<ul class="nav">
-						
+
 						<li <%= 'class=active' if params[:action] == "index" %> >
 							<%= link_to :Search, controller: "welcome", action: "index" %>
 						</li>
 						<li <%= 'class=active' if params[:action] == "dictionary" %> >
 							<%= link_to :Dictionary, controller: "features", action: "dictionary" %>
-							
+
 						</li>
 						<li <%= 'class=active' if params[:action] == "education" %> >
 							<%= link_to :Education, controller: "features", action: "education" %>
-							
+
 						</li>
 						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
-							<%= link_to "Messages", controller: "features", action: "batch_messages" %>
-							
+							<%= link_to "Messages", {controller: "features", action: "batch_messages"}, remote: true,:onclick => '$("#yield_content").empty();$("#loading").fadeIn()' %>
+
 						</li>
-					<li <%= 'class=active' if params[:action] == "gpa" %> >
+						<li <%= 'class=active' if params[:action] == "gpa" %> >
 							<%= link_to "GPA", controller: "features", action: "gpa" %>
-							
+
 						</li>
-					
+
 						<li>
 							<div class="search_form" style="border: 0px;margin: 0px;padding: 0px;">
 								<form action="" method="post" style="border: 0px;margin: 0px;padding: 0px;">
@@ -55,7 +55,7 @@
 
 					</ul>
 
-						<ul class="nav pull-right">
+					<ul class="nav pull-right">
 						<a class="brand" style="float: left;font-size: 12pt;color: #AA45BB" href="#"><%= current_user.registration_number.upcase %></a>
 
 						<li class="divider-vertical">
@@ -64,7 +64,6 @@
 						</li>
 
 					</ul>
-
 
 				</div>
 
@@ -119,9 +118,6 @@
 
 		</div>
 
-
-
-
 		<div class="container pull-left">
 			<div class="navbar navbar-fixed-bottom">
 				<div class="navbar-inner">
@@ -161,7 +157,6 @@
 		</div>
 
 		<div id="global_navigations_div" class="wrapper" >
-			
 
 		</div>
 		<hr />
@@ -172,10 +167,15 @@
 				<label style="color: red">Message: <%= flash[:message]%></label>
 			</div>
 			<% end %>
-			<%= yield %>
+
+			<div id="loading" class="progress progress-striped active" style="display: none;">
+				<div class="bar" style="width: 100%;"></div>
+			</div>
+			<div id="yield_content">
+				<%= yield %>
+			</div>
 
 		</div>
-
 
 	</body>
 </html>
