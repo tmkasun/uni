@@ -6,6 +6,7 @@ class FeaturesController < ApplicationController
   end
 
   def batch_messages
+    flash[:alert_warning] = "Confidential data "
     load_twitter_api
     @latest_batch_messages = @client.user_timeline("scrfitb11x")
   end
