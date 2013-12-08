@@ -6,6 +6,16 @@ Uni::Application.routes.draw do
   devise_scope :user do 
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
+  
+  scope 'features/' do
+
+  get 'dictionary' => 'features#dictionary'
+  get 'education' => 'features#education'
+  get 'batch_messages' => 'features#batch_messages'
+  get 'dictionary' => 'features#foo'
+
+  end
+  
   resources :users
   resources :sessions
   get "users/new" => "users#new" , as: "sign_up" 

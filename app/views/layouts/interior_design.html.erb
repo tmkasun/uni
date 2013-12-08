@@ -24,16 +24,22 @@
 			<div class="navbar ">
 				<div class="navbar-inner">
 					<ul class="nav">
-						<li class="active">
-							<a href="#">Search</a>
+						
+						<li <%= 'class=active' if params[:action] == "index" %> >
+							<%= link_to :Search, controller: "welcome", action: "index" %>
 						</li>
-						<li>
-							<%= link_to :Dictionary%>
+						<li <%= 'class=active' if params[:action] == "dictionary" %> >
+							<%= link_to :Dictionary, controller: "features", action: "dictionary" %>
+							
 						</li>
-						<li>
-							<%= link_to :Education%>
+						<li <%= 'class=active' if params[:action] == "education" %> >
+							<%= link_to :Education, controller: "features", action: "education" %>
+							
 						</li>
-
+						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
+							<%= link_to "Batch messages", controller: "features", action: "batch_messages" %>
+							
+						</li>
 					</ul>
 
 					<ul class="nav pull-right">
@@ -89,9 +95,7 @@
 		</div>
 
 		<div id="global_navigations_div" class="wrapper">
-			<div class="navigation_buttons">
-				
-			</div>
+			
 
 		</div>
 		<hr />
