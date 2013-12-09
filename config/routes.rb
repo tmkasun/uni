@@ -15,7 +15,7 @@ Uni::Application.routes.draw do
   get 'education' => 'features#education'
   get 'batch_messages' => 'features#batch_messages'
   get 'gpa' => 'features#gpa'
-
+  post 'search' => 'features#search'
   end
   
   resources :users

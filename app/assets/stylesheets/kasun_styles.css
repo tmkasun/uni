@@ -39,3 +39,14 @@
 	height: 100%;
 	overflow: hidden;
 }
+
+.search_form > form {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#search_box {
+	height: 30px;
+	margin-bottom: 0px;
+}
