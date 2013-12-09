@@ -1,0 +1,21 @@
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Index #</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @search_result.each do |result|%>
+        <tr>
+            <td ><%= result.registration_number%></td>
+            <td><%= result.common_name%></td>
+            <td><%= result.name%></td>
+            <td><%= result.phone_number%></td>
+        </tr>
+        <% end %>
+    </tbody>
+
+</table>

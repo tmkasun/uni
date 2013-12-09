@@ -25,22 +25,9 @@ class FeaturesController < ApplicationController
       return false
     end  
     
-    # render text: is_number?(search_key.first)
-    # return false
-    @search_result = Student.where('common_name like ? or name like ? ',"%#{search_key.to_s}%","%#{search_key.to_s}%").limit(15).order(:common_name) 
-    @search_result = Student.where('registration_number like ?',"#{search_key.to_s}%").limit(15).order(:registration_number) if is_number?(search_key.first)
-        
-     
-    render "search_result"
+    @search_result = Student.search(search_key)        
+    
+    #render "search_result"
   end
-  
-  private
-
-  def is_number? number
-    true if Float(number) rescue false
-  end
-
-
-  
   
 end

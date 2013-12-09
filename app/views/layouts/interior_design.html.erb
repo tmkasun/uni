@@ -46,14 +46,11 @@
 						</li>
 
 						<li>
+							
 							<div class="search_form" style="border: 0px;margin: 0px;padding: 0px;">
                                   
-								<!-- <form action="" method="post" style="border: 0px;margin: 0px;padding: 0px;"> -->
-									<%= form_tag({controller: "features", action: "search"}, method: "post") do |f| %>
-									<%= text_field_tag :search_box,nil,name: "search_key",placeholder: "Search index number or name" %>
-									<!-- <input  type="text" name="search_box" id="search_box" style="height: 30px;margin-bottom: 0px;"  placeholder="Search index number or name" /> -->
-									<% end%>
-								<!-- </form> -->
+									<%= text_field_tag :search_box,nil,name: "search_key",placeholder: "Search index number or name", autofocus: true %>
+									
 							</div>
 						</li>
 
