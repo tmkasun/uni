@@ -12,24 +12,6 @@
 		<%= yield :head %>
 		<%= csrf_meta_tag %>
 		
-		<style>
-.ui-block-head
-{
-background-color: lightgray;
-border: 1px solid black;
-font-weight: bold;
-
-}
-.ui-block-a,
-.ui-block-b,
-.ui-block-c,
-.ui-block-d
-{
-	/*border: 1px solid black;*/
-	border-top: 1px solid;
-}
-</style>
-
 	</head>
 	<body>
 		<div data-theme="c" data-role="header" data-position="fixed">
@@ -41,7 +23,7 @@ font-weight: bold;
 						class="ui-btn-active ui-state-persist"> Search </a>
 					</li>
 					<li>
-						<a href="#page1" data-transition="fade" data-theme="" data-icon="info"> Dictionary </a>
+						<a href="/features/dictionary" data-transition="fade" data-theme="" data-icon="info"> Dictionary </a>
 					</li>
 					<li>
 						<a href="#page1" data-transition="fade" data-theme="" data-icon="plus"> GPA </a>
@@ -54,46 +36,27 @@ font-weight: bold;
 			</div>
 		</div>
 
-
-    <div data-role="content">
-        <div class="ui-grid-c">
-            <div class="ui-block-a ui-block-head">
-            	Index #
-            </div>
-            <div class="ui-block-b ui-block-head">
-            	First Name
-            </div>
-            <div class="ui-block-c ui-block-head">
-            	Last Name
-            </div>
-            <div class="ui-block-d ui-block-head">
-            	Phone Number
-            </div>
-            
-            
-            
-          <% @search_result.each do |result|%>  
-            
-            <div class="ui-block-a">
-            	<%= result.registration_number%>
-            </div>
-            <div class="ui-block-b">
-            	<%= result.common_name%>
-            </div>
-            <div class="ui-block-c">
-            	<%= result.name%>
-            </div>
-            <div class="ui-block-d">
-            	<%= result.phone_number%>
-            </div>
-            
-           <% end %>  
-            
-            
-            
-            
-        </div>
-    </div>
+<table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+    <thead>
+      <tr class="ui-bar-d">
+        <th data-priority="1">Index</th>
+        <th>Name</th>
+        <th data-priority="3">Full Name</th>
+        <th data-priority="2">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @search_result.each do |result|%>  
+      <tr>
+        <th><a href="#" data-rel="external"><%= result.registration_number%></a></th>
+        <td><%= result.common_name%></td>
+        <td><%= result.name%></td>
+        <td><%= result.phone_number%></td>
+        
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 
 
