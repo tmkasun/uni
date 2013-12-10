@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :prepare_for_mobile
-
+  ActionController::Responder.class_eval do alias :to_mobile :to_html end
 
   protected
 
