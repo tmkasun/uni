@@ -39,10 +39,11 @@
 <table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
     <thead>
       <tr class="ui-bar-d">
-        <th data-priority="1">Index</th>
+        <th>Index</th>
         <th>Name</th>
+        <th>Phone</th>
         <th data-priority="3">Full Name</th>
-        <th data-priority="2">Phone</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -50,9 +51,8 @@
       <tr>
         <th><a href="#" data-rel="external"><%= result.registration_number%></a></th>
         <td><%= result.common_name%></td>
-        <td><%= result.name%></td>
         <td><%= result.phone_number%></td>
-        
+        <td><%= result.name%></td>
       </tr>
       <% end %>
     </tbody>
