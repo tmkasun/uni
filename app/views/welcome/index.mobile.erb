@@ -23,7 +23,7 @@
         <div data-role="navbar" data-iconpos="top">
             <ul>
                 <li>
-                    <a href="#page1" data-transition="fade" data-theme="" data-icon="search"
+                	<a href="/" data-transition="fade" data-theme="" data-icon="search"
                     class="ui-btn-active ui-state-persist">
                         Search
                     </a>
@@ -45,13 +45,17 @@
             </ul>
         </div>
     </div>
+    <%= form_tag({controller: "features", action: "search"}, method: "post","data-ajax"=>"false") do |f|%>
     <div data-role="content">
         <div data-role="fieldcontain">
-            <input name="" id="searchinput3" placeholder="Index number or name" value=""
-            type="search">
+        	
+            
+            <%= text_field_tag :search_key,nil, placeholder: "Index number or name", "type" =>"search" %>
         </div>
-        <input value="Submit" type="submit">
+        <%= submit_tag "search", "type" =>"submit"%>
+        
     </div>
+    <% end %>
     <div data-theme="b" data-role="footer" data-position="fixed">
         <h3>
             About

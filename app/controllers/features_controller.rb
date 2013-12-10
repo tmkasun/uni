@@ -26,7 +26,10 @@ class FeaturesController < ApplicationController
     end  
     
     @search_result = Student.search(search_key)        
-    
+    respond_to do |format|
+      format.html
+      format.mobile {render "search_mobile"}
+    end
     #render "search_result"
   end
   

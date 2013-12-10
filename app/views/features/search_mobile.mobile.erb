@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title><%= @page_title ||= 'Student information system for University of moratuwa FIT (Batch 11)' %></title>
+		<%= javascript_include_tag "https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js" %>
+		<%= stylesheet_link_tag "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" %>
+		<%= favicon_link_tag "fav/favicon.ico"%>
+		<%= yield :head %>
+		<%= csrf_meta_tag %>
+		
+		<style>
+.ui-block-head
+{
+background-color: lightgray;
+border: 1px solid black;
+font-weight: bold;
+
+}
+.ui-block-a,
+.ui-block-b,
+.ui-block-c,
+.ui-block-d
+{
+	/*border: 1px solid black;*/
+	border-top: 1px solid;
+}
+</style>
+
+	</head>
+	<body>
+		<div data-theme="c" data-role="header" data-position="fixed">
+			<h3> Welcome <span style="color: #AA45BB;"><%= current_user.registration_number.upcase %></span></h3>
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li>
+						<a href="/" data-transition="fade" data-theme="" data-icon="search"
+						class="ui-btn-active ui-state-persist"> Search </a>
+					</li>
+					<li>
+						<a href="#page1" data-transition="fade" data-theme="" data-icon="info"> Dictionary </a>
+					</li>
+					<li>
+						<a href="#page1" data-transition="fade" data-theme="" data-icon="plus"> GPA </a>
+					</li>
+					<li>
+						<%= link_to("Logout",destroy_user_session_path, :method => :delete,"data-ajax"=>"false","data-transition" =>"fade","data-icon" =>"back","data-theme"=>"e") unless current_user.nil? %>
+
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+    <div data-role="content">
+        <div class="ui-grid-c">
+            <div class="ui-block-a ui-block-head">
+            	Index #
+            </div>
+            <div class="ui-block-b ui-block-head">
+            	First Name
+            </div>
+            <div class="ui-block-c ui-block-head">
+            	Last Name
+            </div>
+            <div class="ui-block-d ui-block-head">
+            	Phone Number
+            </div>
+            
+            
+            
+          <% @search_result.each do |result|%>  
+            
+            <div class="ui-block-a">
+            	<%= result.registration_number%>
+            </div>
+            <div class="ui-block-b">
+            	<%= result.common_name%>
+            </div>
+            <div class="ui-block-c">
+            	<%= result.name%>
+            </div>
+            <div class="ui-block-d">
+            	<%= result.phone_number%>
+            </div>
+            
+           <% end %>  
+            
+            
+            
+            
+        </div>
+    </div>
+
+
+
+
+    <div data-theme="b" data-role="footer" data-position="fixed">
+        <h3>
+            About
+        </h3>
+    </div>
+	</body>
+</html>
