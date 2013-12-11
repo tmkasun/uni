@@ -14,8 +14,8 @@
 		
 	</head>
 	<body>
-		<div data-theme="c" data-role="header" data-position="fixed">
-			<h3> Welcome <span style="color: #AA45BB;"><%= current_user.registration_number.upcase %></span></h3>
+		<div data-theme="c" data-role="header" >
+			<h3> Welcome <span style="color: #AA45BB;"><%= current_user.common_name %></span></h3>
 			<div data-role="navbar" data-iconpos="top">
 				<ul>
 					<li>
@@ -61,7 +61,7 @@
 
 
 
-    <div data-theme="b" data-role="footer" data-position="fixed">
+    <div data-theme="b" data-role="footer" >
         <h3>
             About
         </h3>
