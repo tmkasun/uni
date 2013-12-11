@@ -13,7 +13,9 @@ gem 'therubyracer'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-gem 'mysql2'
+#gem 'mysql2'
+gem 'pg'                                  # Use postgre as the database for Active Record
+gem 'activerecord-postgres-hstore'        # Speed up hashes in the database.
 
 gem 'devise' #Devise is a flexible authentication solution for Rails based on Warden. It:
 
