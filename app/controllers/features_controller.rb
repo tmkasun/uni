@@ -3,10 +3,10 @@ class FeaturesController < ApplicationController
 
   def which_layout
     #because dictionary action is testing action
-    mobile_device? and params[:action] != 'dictionary' ? 'application.mobile.erb' : 'interior_design'
+    mobile_device? ? 'application.mobile.erb' : 'interior_design'
   end
 
-   def education
+  def education
     
   end
 

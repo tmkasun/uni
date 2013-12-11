@@ -6,7 +6,7 @@ class Student < ActiveRecord::Base
     if is_number?(search_key.first)
       result = where('registration_number ilike ?',"#{search_key.to_s}%").limit(15).order(:registration_number) 
     else
-      result = where('common_name ilike ? or name like ? ',"%#{search_key.to_s}%","%#{search_key.to_s}%").limit(15).order(:common_name)
+      result = where('common_name ilike ? or name like ? ',"#{search_key.to_s}%","%#{search_key.to_s}%").limit(15).order(:common_name)
     end
     
 
