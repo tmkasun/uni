@@ -11,59 +11,35 @@
 		<%= favicon_link_tag "fav/favicon.ico"%>
 		<%= yield :head %>
 		<%= csrf_meta_tag %>
+		
+<%= stylesheet_link_tag "jquery_navobile" %>
+<%= javascript_include_tag "modernizer" %>
+<%= javascript_include_tag "jquery_nav" %>
+<%= javascript_include_tag "hammer_min" %>		
+<%= javascript_include_tag "jquery_hammer" %>
 
 
-<style>
-	/* Swipe works with mouse as well but often causes text selection. */
-#demo-page * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-/* Arrow only buttons in the header. */
-#demo-page .ui-header .ui-btn {
-    background: none;
-    border: none;
-    top: 9px;
-}
-#demo-page .ui-header .ui-btn-inner {
-    border: none;
-}
-/* Content styling. */
-dl { font-family: "Times New Roman", Times, serif; padding: 1em; }
-dt { font-size: 2em; font-weight: bold; }
-dt span { font-size: .5em; color: #777; margin-left: .5em; }
-dd { font-size: 1.25em; margin: 1em 0 0; padding-bottom: 1em; border-bottom: 1px solid #eee; }
-.back-btn { float: right; margin: 0 2em 1em 0; }
-</style>
+
+
+<script>
+$(function() {
+	$('#navigation').navobile();
+});
+</script>
 	</head>
 	<body>
 
-
-<div data-url="demo-page" data-role="page" id="demo-page" data-theme="d">
-    <div data-role="header" data-theme="b">
-        <h1>Swipe left or right</h1>
-        <a href="#left-panel" data-theme="d" data-icon="arrow-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open left panel</a>
-        <a href="#right-panel" data-theme="d" data-icon="arrow-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open right panel</a>
-    </div><!-- /header -->
-    <div data-role="content">
-        <dl>
-            <dt>Swipe <span>verb</span></dt>
-            <dd><b>1.</b> to strike or move with a sweeping motion</dd>
-        </dl>
-        <a href="#demo-intro" data-rel="back" class="back-btn" data-role="button" data-mini="true" data-inline="true" data-icon="back" data-iconpos="right">Back to demo intro</a>
-    </div><!-- /content -->
-    <div data-role="panel" id="left-panel" data-theme="b">
-        <p>Left reveal panel.</p>
-        <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
-    </div><!-- /panel -->
-    <div data-role="panel" id="right-panel" data-display="push" data-position="right" data-theme="c">
-        <p>Right push panel.</p>
-        <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
-    </div><!-- /panel -->
+<div class="mobile-header-bar mobile-only" style="position:relative;">
+<a href="#" id="show-navobile" class="icon">=</a>
 </div>
+ 
+<nav id="navigation">
+<ul>
+<li><a href="#"><a href="http://www.jqueryscript.net/menu/">Menu</a> 1</a></li>
+<li><a href="#">Menu 2</a></li>
+<li><a href="#">Menu 3</a></li>
+</ul>
+</nav>
  
 
 	</body>

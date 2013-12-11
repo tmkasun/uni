@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title><%= @page_title ||= 'Student information system for University of moratuwa FIT (Batch 11)' %></title>
+		<%= javascript_include_tag "https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js" %>
+		<%= stylesheet_link_tag "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" %>
+		<%= favicon_link_tag "fav/favicon.ico"%>
+		<%= yield :head %>
+		<%= csrf_meta_tag %>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-beta.1/jquery.mobile-1.3.0-beta.1.min.css" />  
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
+    <script src="http://code.jquery.com/mobile/1.3.0-beta.1/jquery.mobile-1.3.0-beta.1.min.js"></script>  
+    
+<style>
+    .open a, .open a:hover {  
+        padding: 7px 15px;  
+        background-color: #000;  
+        border-radius: 3px;  
+    }  
+    .open {   
+        color: #fff;  
+        position: absolute;  
+    }  
+    .open.left {  
+        left: 20px;  
+        cursor: pointer;  
+    }  
+    .open.rightright {  
+        rightright: 20px;  
+        cursor: pointer;  
+    }  
+    .panel {  
+        background: #7F8C8D;  
+        color: #ECF0F1;  
+    }  
+    .panel a {  
+        color: #FFF !important;  
+        text-shadow: 0 0 0 rgba(0,0,0,0);  
+        font-size: 14px;  
+        padding: 15px 20px 15px 60px;  
+        display: block;  
+        text-decoration: none;  
+        border-bottom: 1px solid #475657;  
+        border-top: 1px solid #95A5A6;  
+        position: relative;  
+        font-weight: 400;  
+    }  
+    .panel ul {  
+        padding: 0;  
+        margin: 0;  
+        list-style: none;  
+        border-bottom: 1px solid #95A5A6;  
+    }  
+    .panel .avatar {  
+        position: absolute;  
+        top: 8px;  
+        left: 20px;  
+    }  
+    .ui-panel-inner {  
+        padding: 0;  
+    }  
+    .panel a:hover {  
+        background-color: #95A5A6;  
+    }  
+    .panel.rightright a:before {  
+        content: '';  
+        display: block;  
+        width: 12px;  
+        height: 12px;  
+        border-radius: 50%;  
+        position: absolute;  
+        background-color: #2ECC71;  
+        rightright: 20px;  
+    }  
+    .panel.left a:before {  
+        content: '';  
+        display: inline-block;  
+        position: absolute;  
+        width: 24px;  
+        height: 24px;  
+        top: 15px;  
+        left: 20px;  
+        font-family: 'hk-demo';  
+        text-align: center;  
+        font-size: 18px;  
+    }  
+    .panel.left .newsfeed a:before {   
+        content: '\f09e';  
+    }  
+    .panel.left .profile a:before {   
+        content: 'ðŸ‘¤';  
+    }  
+    .panel.left .setting a:before {   
+        content: '\2699';  
+    }  
+    .panel.left .logout a:before {   
+        content: '\e78e';  
+    }  
+    .panel.left .report a:before {   
+        content: '\f0e0';  
+    }  
+</style>
+	</head>
+	<body>
+
+    <div data-role="page">  
+        <div class="header" data-role="header">  
+            <span class="open left"><a href="#panel-01">&#61641;</a></span>  
+            <span class="title">Hello World</span>  
+            <span class="open right"><a href="#panel-02">&#9776;</a></span>  
+        </div>  
+        <div class="content" data-role="content">  
+            <h3>This is the content</h3>  
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod  
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam [...].</p>  
+        </div>  
+        <div class="panel left" data-role="panel" data-position="left" data-display="push" id="panel-01">  
+            <ul>  
+                <li class="newsfeed"><a href="#" title="Home">News Feed</a></li>  
+                <li class="profile"><a href="#" title="Profile">Profile</a></li>  
+                <li class="setting"><a href="#" title="Setting">Setting</a></li>  
+                <li class="logout"><a href="#" title="Logout">Logout</a></li>  
+                <li class="report"><a href="#" title="Report">Report Bug</a></li>  
+            </ul>  
+        </div>  
+        <div class="panel right" data-role="panel" data-position="right" data-display="overlay" id="panel-02">  
+                <ul>  
+                    <li><a href="#" title="John Doe"><span class="avatar"><img src="img/mambows_120.jpg" width="30" height="30"></span>John Doe</a></li>  
+                    <li><a href="#" title="Jessy Doe"><span class="avatar"><img src="img/mkalalang_120.jpg" width="30" height="30"></span>Jessy Doe</a></li>  
+                </ul>  
+        </div>  
+    </div>  
+
+	</body>
+</html>

@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :prepare_for_mobile
   ActionController::Responder.class_eval do alias :to_mobile :to_html end
-
+  
+  
   protected
 
   def load_twitter_api
@@ -36,6 +37,10 @@ class ApplicationController < ActionController::Base
   
   helper_method :mobile_device?
   
+ 
+  
+
+    
 =begin
 helper_method is useful when the functionality is something that's used between both the controller and the view. A good example is something like current_user.
 

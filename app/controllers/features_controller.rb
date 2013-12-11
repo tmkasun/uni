@@ -1,6 +1,11 @@
 class FeaturesController < ApplicationController
-  layout "interior_design"
-  
+  layout :which_layout
+
+  def which_layout
+    #because dictionary action is testing action
+    mobile_device? and params[:action] != 'dictionary' ? 'application.mobile.erb' : 'interior_design'
+  end
+
    def education
     
   end
