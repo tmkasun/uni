@@ -12,16 +12,6 @@
 		<!-- text-center -->
 		<div class="span6 loging_n_register_div">
 			<h4 class="shadow" style="text-align: center;">Sign in</h4>
-			<% if notice %>
-				<p class="alert alert-notice">
-					<%= notice %>
-				</p>
-				<% end %>
-				<% if alert %>
-				<p class="alert alert-error">
-					<%= alert %>
-				</p>
-			<% end %>
 
 			<%= form_for resource, :as => resource_name, :url => session_path(resource_name) ,html: {class: "form-horizontal"}  do |f| %>
 
