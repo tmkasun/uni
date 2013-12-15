@@ -10,10 +10,19 @@ var delay = (function() {
 
 $(function() {
 	$("#search_box").on("keyup",function() {
-
+		
+		var $th = $(this);
+		var valid = true;
+        $th.val( $th.val().replace(/[^a-zA-Z0-9.]/g, function(str) {valid = false; return "";} ) );
+		if(!valid)
+			return 0;
+		
+		
+		$("#search_loading_animation").fadeIn();
 		delay(function() {
 			// alert($("#search_box").serialize());
 			$.post("/features/search", $("#search_box").serialize(),null,"script");
+			$("#search_loading_animation").fadeOut();
 		}, 500);
 
 	});
