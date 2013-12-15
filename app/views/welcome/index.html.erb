@@ -5,10 +5,11 @@
 		text-align: center;
 		position: relative;
 		top: 80px;
+		
 	}
 	.box {
 		width: 70%;
-		height: 200px;
+		height: 400px;
 		background: #FFF;
 		margin: 40px auto;
 		position: absolute;
@@ -67,9 +68,32 @@
 	}
 
 </style>
+<script>
+		$("document").ready(
+	function(){
+	//alert("oks");
+	$("#loading").fadeIn();
+	$.get("features/batch_messages",function(){
+		
+	tic();
+	setInterval(function(){tic()}, 5000);
+	
+	});
+	
+	//alert("okkkkkkkkkk");
+	}
+	);
+</script>
+
 <link href='http://fonts.googleapis.com/css?family=Bad+Script&amp;subset=latin,cyrillic' rel='stylesheet'>
 <div id="box1" class="container vcard box effect7" style="left: 40%;">
 
 	<h1 class="absolute-Center" style="text-align: center">Hi! <span class="fn url"><%= Student.find_by_registration_number(current_user.registration_number.upcase).common_name%></span></h1>
+
+			<div id="loading" class="progress progress-striped active" style="display: none;">
+				<div class="bar" style="width: 100%;"></div>
+			</div>
+
+
 
 </div>
