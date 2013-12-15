@@ -50,6 +50,8 @@ gem 'jquery-turbolinks' #Turbolinks will surprise you. Most part of your JavaScr
 gem 'jbuilder', '~> 1.2'
 
 gem 'twitter'  #A Ruby interface to the Twitter API.
+
+gem "chartkick" #Create beautiful Javascript charts with one line of Ruby. No more fighting with charting libraries!
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
