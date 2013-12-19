@@ -1,0 +1,15 @@
+<br />
+<table data-role="table" id="table-custom-2"  class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+	<thead>
+		<tr class="ui-bar-d">
+			<th>Message</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @latest_batch_messages.each do |message| %>
+		<tr>
+			<td><%= message.text %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -39,7 +39,7 @@
 
 						</li>
 						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
-							<%= link_to "Messages", {controller: "features", action: "batch_messages"}, remote: true,:onclick => '$("#yield_content").empty();$("#loading").fadeIn()' %>
+							<%= link_to "Mailer", {controller: "features", action: "mailer"} %>
 
 						</li>
 						<li <%= 'class=active' if params[:action] == "gpa" %> >

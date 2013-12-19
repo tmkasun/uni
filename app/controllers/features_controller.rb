@@ -24,6 +24,10 @@ class FeaturesController < ApplicationController
     
   end
   
+  def mailer
+    
+  end
+  
   def search
     search_key = params[:search_key] 
     if params[:search_key].length < 2

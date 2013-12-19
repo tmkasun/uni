@@ -1,49 +1,14 @@
-<div data-role="page" id="page1">
-    <div data-theme="c" data-role="header" >
-        <h3>
-            Welcome  <span style="color: #AA45BB;"><%= Student.find_by_registration_number(current_user.registration_number.upcase).common_name %></span>
-        </h3>
-        <div data-role="navbar" data-iconpos="top">
-            <ul>
-                <li>
-                	<a href="/" data-transition="fade" data-theme="" data-icon="search"
-                    class="ui-btn-active ui-state-persist">
-                        Search
-                    </a>
-                </li>
-                <li>
-                    <a href="/features/dictionary" data-transition="fade" data-theme="" data-icon="info">
-                        Dictionary
-                    </a>
-                </li>
-                <li>
-                    <a href="#page1" data-transition="fade" data-theme="" data-icon="plus">
-                        GPA
-                    </a>
-                </li>
-                <li>
-                    <%= link_to("Logout",destroy_user_session_path, :method => :delete,"data-transition" =>"fade","data-icon" =>"back","data-theme"=>"e") unless current_user.nil? %>
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-    <%= form_tag({controller: "features", action: "search"}, method: "post","data-ajax"=>"false") do |f|%>
-    <div data-role="content">
-        <div data-role="fieldcontain">
-        	
-            
-            <%= text_field_tag :search_key,nil, placeholder: "Index number or name", "type" =>"search" %>
-        </div>
-        <%= submit_tag "search", "type" =>"submit"%>
-        
-    </div>
-    <% end %>
-    <div data-theme="b" data-role="footer" data-position="fixed">
-        <h3>
-            About
-        </h3>
-    </div>
-</div>	
+<%= form_tag({controller: "features", action: "search"}, method: "post","data-ajax"=>"false") do |f|%>
+<div data-role="content">
+	<div data-role="fieldcontain">
 
+		<%= text_field_tag :search_key,nil, placeholder: "Index number or name", "type" =>"search" %>
+	</div>
+	<%= submit_tag "search", "type" =>"submit"%>
+
+</div>
+<% end %>
+<div data-theme="b" data-role="footer" data-position="fixed">
+	<h3> About </h3>
+</div>
 

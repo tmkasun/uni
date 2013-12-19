@@ -10,7 +10,7 @@ Uni::Application.routes.draw do
   end
   
   scope 'features/' do
-
+  get 'mailer' => 'features#mailer'
   get 'dictionary' => 'features#dictionary'
   get 'education' => 'features#education'
   get 'batch_messages' => 'features#batch_messages'
