@@ -1,40 +1,41 @@
 <style>
 	#ticker {
-		height: 150px;
-		overflow: hidden;
-		
-
+		height: 280px;
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	#ticker li {
 		height: 40px;
-		border-radius:10px;
+		border-radius: 10px;
 		padding: 5px;
 	}
-	
+
 </style>
 
 <script>
-	function tic () {
-	  //alert("asdsada");
-	  //$(‘#ticker li:first’).slideUp( function () { $(this).appendTo($(‘#ticker’)).slideDown(); });
-	  $("#ticker li:eq(1)").slideUp(
-	  	function (){
-	  		$(this).appendTo($("#ticker")).slideDown();
-	  	}
-	  );
-	}	
+	function no_tic() {
+		//alert("asdsada");
+		//$(‘#ticker li:first’).slideUp( function () { $(this).appendTo($(‘#ticker’)).slideDown(); });
+		$("#ticker li:eq(1)").slideUp(function() {
+			$(this).appendTo($("#ticker")).slideDown();
+		});
+	}
 
-
-	</script>
-
+</script>
 
 <ul id="ticker" style="width: 90%">
-	<li class="alert-danger">
-	<%=  @latest_batch_messages.first.text %>
+	<li class="well text-warning">
+		<%= @latest_batch_messages.first.text %>
+		<p class="text-right ">
+			<small class="muted text-info"> <i class="icon-time icon-white"></i> <%= time_ago_in_words(@latest_batch_messages.first.created_at)%> ago</small>
+		</p>
 	</li>
-<% @latest_batch_messages.each do |message| %>
-	<li class="alert-info">
+	<% @latest_batch_messages.each do |message| %>
+	<li class="well">
 		<%= message.text %>
+		<p class="text-right">
+			<small class="muted text-info"> <i class="icon-time icon-white"></i> <%= time_ago_in_words(message.created_at)%> ago</small>
+		</p>
 	</li >
-<% end %>
+	<% end %>
 </ul>
