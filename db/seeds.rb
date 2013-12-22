@@ -11,10 +11,10 @@ puts "seeding data into database \n"
 dump_file = File.open("#{Rails.root}/test/fixtures/b11.yml")
 yaml_file = YAML::load_file(dump_file)
 
-Student.destroy_all
+Profile.destroy_all
 puts "\n\n******All records destroyed******\n\n"
 yaml_file.each do |record|
-  result = Student.create!(
+  result = Profile.create!(
   :registration_number => record["reg_number"],
   :name => record["name"],
   :common_name => record["cname"],

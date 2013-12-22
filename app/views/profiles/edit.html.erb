@@ -1,0 +1,69 @@
+<div class="well">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="#home" data-toggle="tab">Profile</a>
+		</li>
+		<li>
+			<a href="#profile" data-toggle="tab">Password</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active in" id="home">
+			<%= form_for @profile do |f|%>
+
+			<%= f.label :common_name,"First Name" %>
+			<%= f.text_field :common_name, :readonly => true,class: "input-xlarge"%>
+
+			<%= f.label :name,"Full Name" %>
+			<%= f.text_field :name, :readonly => true,class: "input-xlarge"%>
+
+			<%= f.label :registration_number,"Registration Number" %>
+			<%= f.text_field :registration_number, :readonly => true,class: "input-xlarge"%>
+
+			<%= f.label :phone_number,"Phone Number" %>
+			<%= f.text_field :phone_number,class: "input-xlarge"%>
+
+			<%= f.label :home_address,"Home Town" %>
+			<%= f.text_field :home_address,class: "input-xlarge"%>
+
+			<%= f.label :school,"School" %>
+			<%= f.text_field :school,class: "input-xlarge"%>
+
+			<%= f.label :al_stream,"A/L" %>
+			<%= f.text_field :al_stream,class: "input-xlarge"%>
+
+			<div class="form-inline">
+				<%= f.radio_button(:gender,"male") -%>
+				<%= f.label :gender_male,"male", class: "radio inline control-label" -%>
+
+				<%= f.radio_button(:gender,"female")%>
+				<%= f.label :gender_female,"female", class: "radio inline control-label" %>
+			</div>
+			
+			<div class="form-inline">
+				<%= f.radio_button(:degree,"it") -%>
+				<%= f.label :gender_it,"IT", class: "radio inline control-label" -%>
+
+				<%= f.radio_button(:degree,"itm")%>
+				<%= f.label :gender_itm,"IT&M", class: "radio inline control-label" %>
+			</div>
+			<br />
+			<div>
+				<%= f.submit "Update",class: "btn btn-primary"%>
+			</div>
+			<% end %>
+			Last update on <%= @profile.updated_at%>
+		</div>
+
+		<div class="tab-pane fade" id="profile">
+			<%= form_for @profile do |f|%>
+			<label>New Password</label>
+			<input type="password" class="input-xlarge">
+			<div>
+				<%= f.submit "Update",class: "btn btn-primary"%>
+			</div>
+
+			<% end %>
+		</div>
+
+	</div>

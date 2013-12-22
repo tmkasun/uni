@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,:recoverable, :rememberable, :trackable,:validatable, :authentication_keys => [:registration_number]
   # remove :registerable temporaly
   validates :registration_number , presence: true , uniqueness: true
-
+  has_one :profile
   def email_required?
     false
   end

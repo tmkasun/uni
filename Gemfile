@@ -18,6 +18,7 @@ gem 'pg'                                  # Use postgre as the database for Acti
 gem 'activerecord-postgres-hstore'        # Speed up hashes in the database.
 
 gem 'devise' #Devise is a flexible authentication solution for Rails based on Warden. It:
+gem "cancan" #CanCan is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

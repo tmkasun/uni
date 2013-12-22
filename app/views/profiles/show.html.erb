@@ -1,0 +1,22 @@
+<div class="container center">
+	<div class="span2">
+		<%= image_tag 'profile/default-avatar.png', size: 16 %>
+	</div>
+	<div class="span4">
+		<blockquote>
+			<p>
+				<%= @profile.common_name%>
+			</p>
+			<small><cite title="Source Title"><%= @profile.name%> </cite></small>
+		</blockquote>
+		<p>
+			<% @profile.attributes.each do |key,value| %>
+			<i class="icon-globe"></i> <%= "#{key} ====>>>> #{value}" %>
+			<br>
+			<% end %>
+		</p>
+	</div>
+</div>
+
+<%= link_to "Edit" ,edit_profile_url(@profile.id) %>
+

@@ -34,7 +34,7 @@ class FeaturesController < ApplicationController
       return false
     end  
     
-    @search_result = Student.search(search_key)        
+    @search_result = Profile.search(search_key)        
     respond_to do |format|
       format.js {render "search"}
       format.mobile {render "search_mobile"}
