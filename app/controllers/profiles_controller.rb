@@ -23,6 +23,8 @@ class ProfilesController < ApplicationController
       redirect_to @updated_profile
     else
       @title = "Edit user"
+      flash[:alert_warning] = @updated_profile.errors.full_messages
+      @profile = Profile.find(params[:id])
       render 'edit'
     end
   end
@@ -33,6 +35,6 @@ class ProfilesController < ApplicationController
   # since you'll be able to reuse the same permit list between create and update. Also, you
   # can specialize this method with per-user checking of permissible attributes.
   def profile_params
-    params.require(:profile).permit(:phone_number, :home_address,:school,:al_stream,:gender,:degree,:id)
+    params.require(:profile).permit(:phone_number, :home_address,:school,:al_stream,:gender,:degree,:id, :picture)
   end
 end

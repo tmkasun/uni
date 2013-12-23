@@ -9,7 +9,7 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active in" id="home">
-			<%= form_for @profile do |f|%>
+			<%= form_for(@profile, html: {multipart: true})  do |f|%>
 
 			<%= f.label :common_name,"First Name" %>
 			<%= f.text_field :common_name, :readonly => true,class: "input-xlarge"%>
@@ -32,6 +32,7 @@
 			<%= f.label :al_stream,"A/L" %>
 			<%= f.text_field :al_stream,class: "input-xlarge"%>
 
+                        <%= f.file_field :picture%>
 			<div class="form-inline">
 				<%= f.radio_button(:gender,"male") -%>
 				<%= f.label :gender_male,"male", class: "radio inline control-label" -%>
@@ -57,9 +58,14 @@
 
 		<div class="tab-pane fade" id="profile">
 			<%= form_for @profile do |f|%>
-			<label>New Password</label>
-			<input type="password" class="input-xlarge">
-			<div>
+		        <% if false%>
+                        <%= f.label :password,"Password" %>
+                        <%= f.text_field :password,class: "input-xlarge"%>
+
+                        <%= f.label :password_confirm,"Password confirmation" %>
+                        <%= f.text_field :password_confirm,class: "input-xlarge"%>
+                        <% end %>
+                        <div>
 				<%= f.submit "Update",class: "btn btn-primary"%>
 			</div>
 

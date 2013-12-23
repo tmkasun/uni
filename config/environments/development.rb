@@ -28,4 +28,6 @@ Uni::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' } # edited my tmkasun for devise
+  Paperclip.options[:command_path] = "/usr/bin/"
+
 end

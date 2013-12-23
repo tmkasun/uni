@@ -51,6 +51,7 @@ gem 'jquery-turbolinks' #Turbolinks will surprise you. Most part of your JavaScr
 gem 'jbuilder', '~> 1.2'
 
 gem 'twitter'  #A Ruby interface to the Twitter API.
+gem "paperclip", "~> 3.0" #Paperclip is intended as an easy file attachment library for Active Record. The intent behind it was to keep setup as easy as possible and to treat files as much like other attributes as possible
 
 gem "chartkick" #Create beautiful Javascript charts with one line of Ruby. No more fighting with charting libraries!
 group :doc do

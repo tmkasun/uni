@@ -1,6 +1,6 @@
 <div class="container center">
 	<div class="span2">
-		<%= image_tag 'profile/default-avatar.png', size: 16 %>
+		<%= image_tag @profile.picture.url(:small)  %>
 	</div>
 	<div class="span4">
 		<blockquote>
