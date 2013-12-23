@@ -4,72 +4,71 @@
 			<a href="#home" data-toggle="tab">Profile</a>
 		</li>
 		<li>
-			<a href="#profile" data-toggle="tab">Password</a>
+			<a href="#other" data-toggle="tab">Other</a>
 		</li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active in" id="home">
 			<%= form_for(@profile, html: {multipart: true})  do |f|%>
+			<div class="row-fluid show-grid">
+				<div class="span6">
+					<%= image_tag @profile.picture(:small) -%>
+					<br />
+					<%= f.file_field :picture%>
+					<%= f.label :common_name,"First Name" %>
+					<%= f.text_field :common_name, :readonly => true,class: "input-xlarge"%>
 
-			<%= f.label :common_name,"First Name" %>
-			<%= f.text_field :common_name, :readonly => true,class: "input-xlarge"%>
+					<%= f.label :name,"Full Name" %>
+					<%= f.text_field :name, :readonly => true,class: "input-xlarge"%>
 
-			<%= f.label :name,"Full Name" %>
-			<%= f.text_field :name, :readonly => true,class: "input-xlarge"%>
+					<%= f.label :registration_number,"Registration Number" %>
+					<%= f.text_field :registration_number, :readonly => true,class: "input-xlarge"%>
 
-			<%= f.label :registration_number,"Registration Number" %>
-			<%= f.text_field :registration_number, :readonly => true,class: "input-xlarge"%>
+				</div>
+				<div class="span6">
+					<%= f.label :phone_number,"Phone Number" %>
+					<%= f.text_field :phone_number,class: "input-xlarge"%>
+					<%= f.label :home_address,"Home Town" %>
+					<%= f.text_field :home_address,class: "input-xlarge"%>
 
-			<%= f.label :phone_number,"Phone Number" %>
-			<%= f.text_field :phone_number,class: "input-xlarge"%>
+					<%= f.label :school,"School" %>
+					<%= f.text_field :school,class: "input-xlarge"%>
 
-			<%= f.label :home_address,"Home Town" %>
-			<%= f.text_field :home_address,class: "input-xlarge"%>
+					<%= f.label :al_stream,"A/L" %>
+					<%= f.text_field :al_stream,class: "input-xlarge"%>
 
-			<%= f.label :school,"School" %>
-			<%= f.text_field :school,class: "input-xlarge"%>
+					<div class="form-inline">
+						<%= f.radio_button(:gender,"male") -%>
+						<%= f.label :gender_male,"male", class: "radio inline control-label" -%>
 
-			<%= f.label :al_stream,"A/L" %>
-			<%= f.text_field :al_stream,class: "input-xlarge"%>
+						<%= f.radio_button(:gender,"female")%>
+						<%= f.label :gender_female,"female", class: "radio inline control-label" %>
+					</div>
 
-                        <%= f.file_field :picture%>
-			<div class="form-inline">
-				<%= f.radio_button(:gender,"male") -%>
-				<%= f.label :gender_male,"male", class: "radio inline control-label" -%>
+					<div class="form-inline">
+						<%= f.radio_button(:degree,"it") -%>
+						<%= f.label :gender_it,"IT", class: "radio inline control-label" -%>
 
-				<%= f.radio_button(:gender,"female")%>
-				<%= f.label :gender_female,"female", class: "radio inline control-label" %>
+						<%= f.radio_button(:degree,"itm")%>
+						<%= f.label :gender_itm,"IT&M", class: "radio inline control-label" %>
+					</div>
+					<br />
+					<div>
+						<%= f.submit "Update",class: "btn btn-primary"%>
+
+						<%= content_tag(:button, "Change your password", :type=>:submit,class: "btn btn-warning", formaction: edit_user_registration_path, formmethod: "get")%>
+					</div>
+					<% end %>
+
+					<span class="label label-info"><i class="icon-edit icon-white"></i> Uptaed on <%= time_ago_in_words(@profile.updated_at)%> ago</span>
+
+				</div>
+
 			</div>
-			
-			<div class="form-inline">
-				<%= f.radio_button(:degree,"it") -%>
-				<%= f.label :gender_it,"IT", class: "radio inline control-label" -%>
-
-				<%= f.radio_button(:degree,"itm")%>
-				<%= f.label :gender_itm,"IT&M", class: "radio inline control-label" %>
-			</div>
-			<br />
-			<div>
-				<%= f.submit "Update",class: "btn btn-primary"%>
-			</div>
-			<% end %>
-			Last update on <%= @profile.updated_at%>
+			<%= link_to "Back", :back %>
 		</div>
-
-		<div class="tab-pane fade" id="profile">
-			<%= form_for @profile do |f|%>
-		        <% if false%>
-                        <%= f.label :password,"Password" %>
-                        <%= f.text_field :password,class: "input-xlarge"%>
-
-                        <%= f.label :password_confirm,"Password confirmation" %>
-                        <%= f.text_field :password_confirm,class: "input-xlarge"%>
-                        <% end %>
-                        <div>
-				<%= f.submit "Update",class: "btn btn-primary"%>
-			</div>
-
-			<% end %>
+		<div class="tab-pane fade" id="other">
+			Other things
 		</div>
 
 	</div>

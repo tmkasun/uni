@@ -28,22 +28,22 @@
 					<ul class="nav">
 
 						<li <%= 'class=active' if params[:action] == "index" %> >
-							<%= link_to :Search, controller: "welcome", action: "index" %>
+							<%= link_to :Search, root_path %>
 						</li>
 						<li <%= 'class=active' if params[:action] == "dictionary" %> >
-							<%= link_to :Dictionary, controller: "features", action: "dictionary" %>
+							<%= link_to :Dictionary, controller: "/features", action: "dictionary" %>
 
 						</li>
 						<li <%= 'class=active' if params[:action] == "education" %> >
-							<%= link_to :Education, controller: "features", action: "education" %>
+							<%= link_to :Education, controller: "/features", action: "education" %>
 
 						</li>
 						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
-							<%= link_to "Mailer", {controller: "features", action: "mailer"} %>
+							<%= link_to "Mailer", {controller: "/features", action: "mailer"} %>
 
 						</li>
 						<li <%= 'class=active' if params[:action] == "gpa" %> >
-							<%= link_to "GPA", controller: "features", action: "gpa" %>
+							<%= link_to "GPA", controller: "/features", action: "gpa" %>
 
 						</li>
 

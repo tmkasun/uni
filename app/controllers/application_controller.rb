@@ -7,10 +7,19 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :prepare_for_mobile
   ActionController::Responder.class_eval do alias :to_mobile :to_html end
-  
-  
+  layout :layout_by_resource #https://github.com/plataformatec/devise/wiki/How-To%3a-Create-custom-layouts
+
   protected
 
+  def layout_by_resource
+    if devise_controller?
+      "interior_design"
+    else
+      "application"
+    end
+  end
+  
+  
   def load_twitter_api
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "YsafNDRGeV3Ti7bkgCuyA"

@@ -1,8 +1,16 @@
 Uni::Application.routes.draw do
   resources :profiles
-  get '/test' => 'welcome#test'
+  get '/test' => 'welcome#test' #for debuging purpose only
   
   devise_for :users , :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => "register"}
+  
+   as :user do
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+      put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
+    end
+  
+  
+  
   root :to =>  "welcome#index"
   #match "sessions#user" ,as: "sessions#create"
   #get "welcome/" => "welcome#index", as: "welcome"
