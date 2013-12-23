@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  load_and_authorize_resource
   layout :which_layout
   def which_layout
     #because dictionary action is testing action

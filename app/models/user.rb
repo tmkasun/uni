@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   # remove :registerable temporaly
   validates :registration_number , presence: true , uniqueness: true
   has_one :profile
+  ROLES = %w[admin moderator guest banned] #https://github.com/ryanb/cancan/wiki/Role-Based-Authorization
   def email_required?
     false
   end

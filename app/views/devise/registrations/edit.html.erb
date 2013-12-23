@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :registration_number %><br />
-  <%= f.text_field :registration_number, :autofocus => true %></div>
+  <%= f.text_field :registration_number, :autofocus => true, disabled: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

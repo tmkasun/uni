@@ -12,7 +12,7 @@
 			<%= form_for(@profile, html: {multipart: true})  do |f|%>
 			<div class="row-fluid show-grid">
 				<div class="span6">
-					<%= image_tag @profile.picture(:small) -%>
+					<%= image_tag @profile.picture(:small),class: "img-rounded img-polaroid"-%>
 					<br />
 					<%= f.file_field :picture%>
 					<%= f.label :common_name,"First Name" %>
@@ -35,9 +35,9 @@
 					<%= f.text_field :school,class: "input-xlarge"%>
 
 					<%= f.label :al_stream,"A/L" %>
-					<%= f.text_field :al_stream,class: "input-xlarge"%>
+					<%= f.collection_select :al_stream, Profile::STREAMS, :to_s, :humanize %>
 
-					<div class="form-inline">
+					<div class="well well-small form-inline">
 						<%= f.radio_button(:gender,"male") -%>
 						<%= f.label :gender_male,"male", class: "radio inline control-label" -%>
 
@@ -45,7 +45,7 @@
 						<%= f.label :gender_female,"female", class: "radio inline control-label" %>
 					</div>
 
-					<div class="form-inline">
+					<div class="well well-small form-inline">
 						<%= f.radio_button(:degree,"it") -%>
 						<%= f.label :gender_it,"IT", class: "radio inline control-label" -%>
 
@@ -55,12 +55,15 @@
 					<br />
 					<div>
 						<%= f.submit "Update",class: "btn btn-primary"%>
+						<% end %>
 
-						<%= content_tag(:button, "Change your password", :type=>:submit,class: "btn btn-warning", formaction: edit_user_registration_path, formmethod: "get")%>
+						<%= link_to "Change your password",edit_user_registration_path, class: "btn btn-warning"%>
 					</div>
-					<% end %>
 
-					<span class="label label-info"><i class="icon-edit icon-white"></i> Uptaed on <%= time_ago_in_words(@profile.updated_at)%> ago</span>
+					<p class="muted">
+						<i class="icon-edit icon-white"></i>
+						Uptaed <%= time_ago_in_words(@profile.updated_at)%> ago.
+					</p>
 
 				</div>
 

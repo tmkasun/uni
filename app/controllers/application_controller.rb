@@ -9,10 +9,17 @@ class ApplicationController < ActionController::Base
   ActionController::Responder.class_eval do alias :to_mobile :to_html end
   layout :layout_by_resource #https://github.com/plataformatec/devise/wiki/How-To%3a-Create-custom-layouts
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert_danger] = exception.message
+    redirect_to root_url
+  end 
+  
+  
+  
   protected
 
   def layout_by_resource
-    if devise_controller?
+    if devise_controller? && params[:action].in?(["edit","new"])
       "interior_design"
     else
       "application"
