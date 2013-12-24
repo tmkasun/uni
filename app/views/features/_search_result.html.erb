@@ -1,21 +1,51 @@
-<table class="table table-striped table-bordered table-condensed table-hover">
-    <thead>
-        <tr>
-            <th>Index #</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-        </tr>
-    </thead>
-    <tbody>
-    	<% @search_result.each do |result|%>
-        <tr >
-            <td ><%= result.registration_number%></td>
-            <td><%= result.common_name%></td>
-            <td><%= result.name%></td>
-            <td><%= result.phone_number%></td>
-        </tr>
-        <% end %>
-    </tbody>
+<script>
+	$(document).ready(function() {
+		$(".profile_collapser").on("click", function() {
+			object = this;
+			profile_id = $(object).attr("profile_id");
+			show = $(object).attr("show");
+			if (show == "true") {
+				$('#' + profile_id).collapse('toggle');
+				return true;
+			}
+			$('#' + profile_id).collapse('toggle');
+			url = "/profiles/" + profile_id;
+			$.get(url).success(function(data) {
+				$('#' + profile_id).html(data);
+				$(object).attr("show", "true");
+			});
+
+		});
+	}); 
+</script>
+<table class="table table-striped table-bordered table-condensed table-hover" style="border-collapse:collapse;">
+	<thead>
+		<tr>
+			<th>Index #</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Phone Number</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @search_result.each do |result|%>
+		<tr data-toggle="collapse" class="accordion-toggle profile_collapser" show = "false" profile_id = <%= result.id %> >
+			<td ><%= result.registration_number%></td>
+			<td><%= result.common_name%></td>
+			<td><%= result.name%></td>
+			<td><%= result.phone_number%></td>
+		</tr>
+		<tr >
+			<td colspan="6" class="hiddenRow">
+			<div class="accordian-body collapse" id = <%= result.id %> >
+
+				<div class="progress progress-striped active">
+					<div class="bar" style="width: 100%;"></div>
+				</div>
+
+			</div></td>
+		</tr>
+		<% end %>
+	</tbody>
 
 </table>

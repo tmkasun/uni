@@ -85,6 +85,15 @@
 	);
 </script>
 
+<% if false #session[:login_message] not use because of users bad feeling thing %>
+<script>
+
+
+bootbox.alert("Please send your feedbacks to admin@knnect.com. Thank you!");
+</script>
+<% session[:login_message] = true%>
+<% end %>
+
 <link href='http://fonts.googleapis.com/css?family=Bad+Script&amp;subset=latin,cyrillic' rel='stylesheet'>
 <div id="box1" class="container vcard box effect7" style="left: 40%;">
 
