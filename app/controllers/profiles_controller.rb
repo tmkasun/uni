@@ -10,6 +10,12 @@ class ProfilesController < ApplicationController
     # render text: params
     # return 0
     @profile = Profile.find params[:id]
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @profile
+      }
+    end
   # render json: @profile
   end
 
@@ -29,6 +35,7 @@ class ProfilesController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
 

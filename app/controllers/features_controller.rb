@@ -38,6 +38,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       format.js {render "search"}
       format.mobile {render "search_mobile"}
+      format.json {render json: @search_result }
     end
   #render "search_result"
   end

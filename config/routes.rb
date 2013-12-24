@@ -24,6 +24,7 @@ Uni::Application.routes.draw do
   get 'batch_messages' => 'features#batch_messages'
   get 'gpa' => 'features#gpa'
   post 'search' => 'features#search'
+  get 'search' => 'features#search'
   end
   get "user/register" => "features#add_user"
   post "user/create" => "features#create_user"

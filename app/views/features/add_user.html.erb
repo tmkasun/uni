@@ -1,12 +1,20 @@
+<script>
+	$(document).ready(function() {
+		$('#user_registration_number').typeahead([{
+			valueKey : 'registration_number',
+			remote : '/features/search.json?search_key=%QUERY',
+		}]);
+	});
+
+</script>
 <h2>User Registration</h2>
 
 <%= form_for(User.new, url: user_create_path, method: "post" ) do |f| %>
 
-
 <div>
 	<%= f.label :registration_number %>
 	<br />
-	<%= f.text_field :registration_number, :autofocus => true %>
+	<%= f.text_field :registration_number,autocomplete: 'off', :autofocus => true, "data-provide" => "typeahead","data-items" => "4", placeholder: "Enter a name or an index" %>
 </div>
 
 <div>
