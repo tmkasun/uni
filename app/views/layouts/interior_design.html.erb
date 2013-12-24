@@ -38,9 +38,10 @@
 							<%= link_to :Education, controller: "/features", action: "education" %>
 
 						</li>
+						<% if current_user.role.eql? "admin"%>
 						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
 							<%= link_to "Mailer", {controller: "/features", action: "mailer"} %>
-
+							<% end %>
 						</li>
 						<li <%= 'class=active' if params[:action] == "gpa" %> >
 							<%= link_to "GPA", controller: "/features", action: "gpa" %>
@@ -61,7 +62,7 @@
 					<ul class="nav pull-right">
 						<ul class="nav pull-right">
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="float: left;font-size: 12pt;color: #AA45BB"><%= current_user.profile.common_name %><b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="float: left;font-size: 12pt;color: #AA45BB"><%= current_user.profile.try(:common_name) || current_user.registration_number  %><b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
 										<%= link_to profile_path(current_user.profile) do %>
@@ -71,144 +72,159 @@
 									<li>
 										<a href="/help/support"><i class="icon-envelope"></i> Contact Support</a>
 									</li>
-									<li class="divider"></li>
+									<li class="divider"</li>
+
+									<% if current_user.role.eql? "admin" %>
 									<li>
-										<%= link_to("Logout",destroy_user_session_path, :method => :delete) unless current_user.nil? %>
+									<a href="/user/register"><i class="icon-wrench"></i> <span class="text-warning">Manage Users</span></a>
 									</li>
-								</ul>
+
+									<li>
+									<a href="/profile/new"><i class="icon-cog"></i> <span class="text-warning">Manage Profiles</span></a>
+									</li>
+
+									<li class="divider"</li>
+
+									<% end %>
+									<li>
+									<%= link_to(destroy_user_session_path, :method => :delete) do  %>
+									<i class="icon-off"></i> Logout
+									<% end %>
+									</li>
+									</ul>
+									</li>
+									</ul>
+									</ul>
+
+									</div>
+
+									</div>
+
+									</div>
+
+									<div class="to_messages">
+
+									<% if notice %>
+									<div class="alert alert-success alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+									&times;
+									</button>
+									<%= notice %>
+				</div>
+
+				<% end %>
+
+				<% if alert %>
+				<div class="alert alert-error alert-dismissable">
+					<%= alert %>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+					<%= alert %>
+				</div>
+				<% end %>
+
+				<% if flash[:alert_success] %>
+
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+					<strong>Success </strong><%= flash[:alert_success] %>
+					<% flash[:alert_success] = nil%>
+				</div>
+				<%end%>
+
+				<% if flash[:alert_info] %>
+
+				<div class="alert alert-info alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+					<strong>Info:</strong><%= flash[:alert_info] %>
+					<% flash[:alert_info] = nil%>
+				</div>
+				<%end%>
+
+				<% if flash[:alert_warning] %>
+
+				<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+					<strong>Warning!</strong> <%= flash[:alert_warning]  %>
+					<% flash[:alert_warning] = nil%>
+				</div>
+				<%end%>
+
+				<% if flash[:alert_danger] %>
+
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+						&times;
+					</button>
+					<strong>Danger!</strong><%= flash[:alert_danger] %>
+					<% flash[:alert_danger] = nil%>
+				</div>
+				<%end%>
+
+			</div>
+
+			<div class="container pull-left">
+				<div class="navbar navbar-fixed-bottom">
+					<div class="navbar-inner">
+						<ul class="nav" style="margin-left: 25%;">
+							<li>
+								<a href="#" >&copy; 2013 SiS</a>
+
+							</li>
+							<li>
+								<a href="/about">About</a>
+							</li>
+							<li>
+								<a href="/about/contact">Contact</a>
+							</li>
+							<li>
+								<a href="#">Blog</a>
+							</li>
+							<li>
+								<a href="http://status.uni.knnect.com">Status</a>
+							</li>
+							<li>
+								<a href="//dev.uni.knnect.com/">API</a>
+							</li>
+							<li>
+								<a href="#">Help</a>
+							</li>
+							<li>
+								<a href="/tos">Terms</a>
+							</li>
+							<li>
+								<a href="/privacy">Privacy</a>
 							</li>
 						</ul>
-					</ul>
 
+					</div>
+				</div>
+			</div>
+
+			<div id="global_navigations_div" class="wrapper" >
+
+			</div>
+			<hr />
+
+			<div class="wrapper" style="margin-bottom: 50px;margin-top: 30px;">
+				<% if flash[:message] %>
+				<div class="alert">
+					<label style="color: red">Message: <%= flash[:message]%></label>
+				</div>
+				<% end %>
+
+				<div id="yield_content">
+					<%= yield %>
 				</div>
 
 			</div>
-
-		</div>
-
-		<div class="to_messages">
-
-			<% if notice %>
-			<div class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<%= notice %>
-			</div>
-
-			<% end %>
-
-			<% if alert %>
-			<div class="alert alert-error alert-dismissable">
-				<%= alert %>
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<%= alert %>
-			</div>
-			<% end %>
-
-			<% if flash[:alert_success] %>
-
-			<div class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<strong>Success </strong><%= flash[:alert_success] %>
-				<% flash[:alert_success] = nil%>
-			</div>
-			<%end%>
-
-			<% if flash[:alert_info] %>
-
-			<div class="alert alert-info alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<strong>Info:</strong><%= flash[:alert_info] %>
-				<% flash[:alert_info] = nil%>
-			</div>
-			<%end%>
-
-			<% if flash[:alert_warning] %>
-
-			<div class="alert alert-warning alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<strong>Warning!</strong> <%= flash[:alert_warning]  %>
-				<% flash[:alert_warning] = nil%>
-			</div>
-			<%end%>
-
-			<% if flash[:alert_danger] %>
-
-			<div class="alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-					&times;
-				</button>
-				<strong>Danger!</strong><%= flash[:alert_danger] %>
-				<% flash[:alert_danger] = nil%>
-			</div>
-			<%end%>
-
-		</div>
-
-		<div class="container pull-left">
-			<div class="navbar navbar-fixed-bottom">
-				<div class="navbar-inner">
-					<ul class="nav" style="margin-left: 25%;">
-						<li>
-							<a href="#" >&copy; 2013 SiS</a>
-
-						</li>
-						<li>
-							<a href="/about">About</a>
-						</li>
-						<li>
-							<a href="/about/contact">Contact</a>
-						</li>
-						<li>
-							<a href="#">Blog</a>
-						</li>
-						<li>
-							<a href="http://status.uni.knnect.com">Status</a>
-						</li>
-						<li>
-							<a href="//dev.uni.knnect.com/">API</a>
-						</li>
-						<li>
-							<a href="#">Help</a>
-						</li>
-						<li>
-							<a href="/tos">Terms</a>
-						</li>
-						<li>
-							<a href="/privacy">Privacy</a>
-						</li>
-					</ul>
-
-				</div>
-			</div>
-		</div>
-
-		<div id="global_navigations_div" class="wrapper" >
-
-		</div>
-		<hr />
-
-		<div class="wrapper" style="margin-bottom: 50px;margin-top: 30px;">
-			<% if flash[:message] %>
-			<div class="alert">
-				<label style="color: red">Message: <%= flash[:message]%></label>
-			</div>
-			<% end %>
-
-			<div id="yield_content">
-				<%= yield %>
-			</div>
-
-		</div>
 
 	</body>
 </html>

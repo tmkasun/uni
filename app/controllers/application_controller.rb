@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_by_resource
-    if devise_controller? && params[:action].in?(["edit","new"])
+    if devise_controller? && params[:action].in?(["edit","update"])
       "interior_design"
     else
       "application"
@@ -38,9 +38,9 @@ class ApplicationController < ActionController::Base
   
   def configure_permitted_parameters
 
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:registration_number,:password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:registration_number,:password, :password_confirmation, :remember_me, :role) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:registration_number, :password, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:registration_number, :password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:registration_number, :password, :password_confirmation, :current_password, :role) }
   end
   
   def mobile_device?

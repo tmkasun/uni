@@ -37,6 +37,7 @@ class Ability
       can [:edit,:update], Profile do |profile|
         profile.user_id ==  user.id
       end
+      
     end
   end
 end

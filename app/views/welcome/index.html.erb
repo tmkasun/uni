@@ -88,7 +88,7 @@
 <link href='http://fonts.googleapis.com/css?family=Bad+Script&amp;subset=latin,cyrillic' rel='stylesheet'>
 <div id="box1" class="container vcard box effect7" style="left: 40%;">
 
-	<h1 class="absolute-Center" style="text-align: center">Hi! <span class="fn url"><%= current_user.profile.common_name%></span></h1>
+	<h1 class="absolute-Center" style="text-align: center">Hi! <span class="fn url"><%= current_user.profile.try(:common_name) || current_user.registration_number %></span></h1>
 
 			<div id="loading" class="progress progress-striped active" style="display: none;">
 				<div class="bar" style="width: 100%;"></div>

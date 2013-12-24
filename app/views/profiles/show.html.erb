@@ -1,22 +1,57 @@
-<div class="container center">
-	<div class="span2">
-		<%= image_tag @profile.picture.url(:small)  %>
-	</div>
-	<div class="span4">
+<div class="well center">
+	<div class="absolute_center">
+		<%= image_tag @profile.picture.url(:small),class: "img-rounded img-polaroid"  %>
+
 		<blockquote>
 			<p>
 				<%= @profile.common_name%>
 			</p>
 			<small><cite title="Source Title"><%= @profile.name%> </cite></small>
 		</blockquote>
-		<p>
-			<% @profile.attributes.each do |key,value| %>
-			<i class="icon-globe"></i> <%= "#{key} ====>>>> #{value}" %>
-			<br>
-			<% end %>
-		</p>
 	</div>
+	<%= form_for(@profile)  do |f|%>
+
+	<div class="row-fluid">
+		<div class="span6">
+			<%= f.label :common_name,"First Name" %>
+			<%= f.text_field :common_name, :readonly => true,class: "input-xlarge"%>
+
+			<%= f.label :name,"Full Name" %>
+			<%= f.text_field :name, :readonly => true,class: "input-xlarge"%>
+
+			<%= f.label :registration_number,"Registration Number" %>
+			<%= f.text_field :registration_number, :readonly => true,class: "input-xlarge"%>
+
+		</div>
+		<div class="span6">
+			<%= f.label :phone_number,"Phone Number" %>
+			<%= f.text_field :phone_number,class: "input-xlarge" , disabled: true%>
+			<%= f.label :home_address,"Home Town" %>
+			<%= f.text_field :home_address,class: "input-xlarge" ,disabled: true%>
+
+			<%= f.label :school,"School" %>
+			<%= f.text_field :school,class: "input-xlarge" ,disabled: true%>
+
+			<%= f.label :al_stream,"A/L" %>
+			<%= f.text_field :al_stream, disabled: true  %>
+
+			<%= f.label "Gender" %>
+			<div class="well well-small form-inline">
+				<%= @profile.gender %>
+
+			</div>
+
+			<%= f.label "Course" %>
+			<div class="well well-small form-inline">
+				<%= @profile.degree %>
+
+			</div>
+
+		</div>
+
+	</div>
+	<% end %>
+	<% if can? :edit, @profile %>
+	<%= link_to "Edit" ,edit_profile_url(@profile.id) , class: "btn btn-inverse" %>
+	<% end %>
 </div>
-
-<%= link_to "Edit" ,edit_profile_url(@profile.id) %>
-

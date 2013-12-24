@@ -35,24 +35,33 @@ end
 
 def import_student_profile_pictures
   images_base_path = "/home/kbsoft/Desktop/Uni_work/Level2_semester1/_4local/mm/student_photos/"
-  inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11it/"
+  #inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11it/"
+  inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11itm/"
   puts "importing students profile pictures"
   all_profiles = Profile.all
+  fail_count = 0
+  sucusess_count = 0
+
   all_profiles.each do |profile|
-    fail_count = 0
-    sucusess_count = 0
 
     begin
+      unless profile.picture.blank?
+        puts "Skiped #{profile.registration_number}"
+      next
+      end
       remote_photo = open(inet_base_url+profile.registration_number.upcase+".bmp")
+
       def remote_photo.original_filename;base_uri.path.split('/').last; end
       puts "Sucsussfully added #{profile.registration_number}"
       profile.picture =  remote_photo
       puts profile.save
-
+      sucusess_count +=1
     rescue OpenURI::HTTPError => e
       puts "fail to added #{profile.registration_number}"
+    fail_count +=1
     end
 
+    
   # begin
   # remote_photo = File.new(images_base_path+profile.registration_number.upcase+".jpg")
   # puts "Sucsussfully added #{profile.registration_number}"
@@ -66,6 +75,7 @@ def import_student_profile_pictures
   # end
 
   end
+  puts "failed=#{fail_count}, sucsussed = #{sucusess_count}"
 
 end
 
