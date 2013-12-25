@@ -21,8 +21,11 @@ class ApplicationController < ActionController::Base
   def layout_by_resource
     if devise_controller? && params[:action].in?(["edit","update"])
       "interior_design"
-    else
-      "application"
+   #else
+     # "application"
+    end
+    if is_a?(Devise::SessionsController) && mobile_device? #http://stackoverflow.com/questions/4412018/rails-devise-how-to-render-login-page-without-a-layout
+      false
     end
   end
   

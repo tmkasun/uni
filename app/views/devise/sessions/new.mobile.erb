@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   <title><%= @page_title ||= 'Student information system for University of moratuwa FIT (Batch 11)' %></title>
+                <%= javascript_include_tag "https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js", "https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js" %>
+                <%= javascript_include_tag 'application' %>
+                <%= stylesheet_link_tag "https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" %>
+                <%= favicon_link_tag "fav/favicon.ico"%>
+                <%= yield :head %>
+                <%= csrf_meta_tag %>
+
+</head>
+<body>
 
 		<div data-role="page" id="page1">
 			<div id="mobi_header" data-theme="c" data-role="header" data-position="fixed">
@@ -29,3 +46,7 @@
 				<h1> Developer preview </h1>
 			</div>
 		</div>
+
+
+</body>
+</html>
