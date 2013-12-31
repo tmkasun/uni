@@ -1,0 +1,91 @@
+ 
+<div class="jumbotron">
+  <div class="container">
+   <div style="margin-top: -1%;padding-left: 10%; padding-top: -10%" >
+    <h4>Calculate your GPA(Continue)</h4>
+	
+	<% @color = 'red' %>
+	<div class="alert alert-info" >
+	 Level :
+	 <% if @gpacal[:level].blank? %>
+	   <font color = '<%= @color %>'>
+	     <%= "Not provide"  %>
+	   </font>
+	 <% else %>
+	     <%= @gpacal[:level] %>
+	  <% end %>
+	 <br/>
+     Semester :
+	 <% if @gpacal[:semester].blank? %>
+	   <font color = '<%= @color %>'>
+	     <%= "Not provide"  %>
+	    </font>
+	 <% else %>
+	   <%= @gpacal[:semester] %>
+	 <% end %>
+	 <br/>
+     Number of Subjects :<%= @gpacal[:no_of_subjects] %> 
+	 
+	 <% $no_sub = @gpacal[:no_of_subjects] %> 
+	 </div> <br/>
+	 
+	 <%= form_for :gpacalculate, url: gpa_display_gpa_path, method: :post do |f| %>
+	   
+	   <% $j = 0 %>
+	   <% $s = "" %>
+	   <% while $j < Integer(@gpacal[:no_of_subjects])  do %>
+	     <% $s += $j.to_s %> 
+		 <% $j +=1 %>
+	   <%end %>
+	   
+	   
+	    
+ 
+   <table border = '0' class="table table-striped">
+	
+    <tr>
+	 <th>Subject Name</th>
+	 <th>Grade</th>
+	 
+	</tr>
+	   <% $i = 0 %>
+	    <% while $i < Integer(@gpacal[:no_of_subjects])  do %>
+          <tr>		    
+		    <td>
+			  <%= f.text_field :"#{$s}"[$i][1] ,:class => "sub_name","data-pre" => @subjects.to_json %>
+			</td>
+			<td>
+			 <%= f.select("#{$s}"[$i][1], options_for_select([["", ""],["A+", "4.2"], ["A", "4.0"], ["A-", "3.7"], ["B+", "3.3"],["B", "3.0"],
+			 ["B-", "2.7"], ["C+", "2.3"], ["C", "2.0"],["C-", "1.5"], ["D", "1.0"], ["I", "0.0"], ["F", "0.0"], ]) ,{}, { :class => 'btn btn-default' })%>   
+			 
+			</td>
+			 
+		 </tr>   
+         <% $i +=1 %>
+      <% end %>
+	  
+	</table>  
+	   <%= f.submit 'calculate',:class => 'btn btn-primary'  %> or
+	   <%= link_to 'Back', gpa_enter_level_semester_path %><br/>
+	    
+     <% end  %>
+<div class = "navbar-form pull-right">
+  <table>	
+    <tr> 
+      <td>	
+		 <%= button_to 'Add Subject', gpa_add_subject_path(:sub => @gpacal[:no_of_subjects]), :class => 'btn btn-success' %>  
+	  </td>
+	  <td>
+		 <%= button_to 'Remove Subject', gpa_remove_subject_path(:sub => @gpacal[:no_of_subjects]), :class => 'btn btn-success' %>
+	  </td>
+	</tr>
+  </table>
+  <br/>
+	 <br/>
+	 <br/>
+</div>	  
+	 
+   </div>
+ </div>
+</div>
+ 

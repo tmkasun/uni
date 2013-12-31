@@ -1,37 +1,44 @@
 Uni::Application.routes.draw do
   resources :profiles
   get '/test' => 'welcome#test' #for debuging purpose only
-  
+
   devise_for :users , :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => "register"}
-   as :user do
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
-      put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'            
-    end
-  
-  
-  
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
   root :to =>  "welcome#index"
   #match "sessions#user" ,as: "sessions#create"
   #get "welcome/" => "welcome#index", as: "welcome"
-  devise_scope :user do 
+  devise_scope :user do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
-  
+
   scope 'features/' do
-  get 'mailer' => 'features#mailer'
-  get 'dictionary' => 'features#dictionary'
-  get 'education' => 'features#education'
-  get 'batch_messages' => 'features#batch_messages'
-  get 'gpa' => 'features#gpa'
-  post 'search' => 'features#search'
-  get 'search' => 'features#search'
+    get 'mailer' => 'features#mailer'
+    get 'dictionary' => 'features#dictionary'
+    get 'education' => 'features#education'
+    get 'batch_messages' => 'features#batch_messages'
+    post 'search' => 'features#search'
+    get 'search' => 'features#search'
   end
+
+
+
+  post 'gpa/display_gpa'
+  post 'gpa/calculate_gpa'
+  get 'gpa/enter_level_semester'
+  post 'gpa/add_subject'
+  post 'gpa/remove_subject'
+
+
   get "user/register" => "features#add_user"
   post "user/create" => "features#create_user"
-  
+
   resources :users
   resources :sessions
-  get "users/new" => "users#new" , as: "sign_up" 
+  get "users/new" => "users#new" , as: "sign_up"
   get "tos/"   => "welcome#tos", as: "terms"
   get "users/:action" => "users#:action" # this is temporaly
 # The priority is based upon order of creation: first created -> highest priority.

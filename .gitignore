@@ -47,3 +47,4 @@ app/assets/javascripts/libs/jquery-1.7.1.min
 config/devise_config/fb.yml
 config/devise_config/google.yml
 db/sphinx/*
+dinuka/

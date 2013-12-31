@@ -1,0 +1,88 @@
+ <div class="jumbotron">
+  <div class="container">
+   <div style="margin-top: -1%;padding-left: 10%; padding-top: -10%" >
+    <h4>
+	 <div class="alert alert-warning">
+	  Your GPA report
+	  </div>
+	  </h4>
+	  
+	  <% @color = 'red' %>
+	  	  
+	   <% @sum = 0 %>
+	   <% @tot = 0 %>	
+       <% @one_sub_sum = 0 %>	   
+		
+		 		
+		
+		<table border ='0' class="table table-striped">
+		<tr>
+		  <td>Level : </td><td> 
+		      
+			  <% if $level.blank? %>
+	            <font color = '<%= @color %>'>
+	                <%= "Not provide"  %>
+	            </font>
+	          <% else %>
+	              <%=  $level %>
+	          <% end %>
+			  
+			  </td>
+		  <td>Semester : </td><td> 
+		  <% if $semester.blank? %>
+	            <font color = '<%= @color %>'>
+	                <%= "Not provide"  %>
+	            </font>
+	          <% else %>
+	              <%=  $semester %>
+	          <% end %>
+		  </td>
+		</tr>
+		
+	  <% $i = 0 %>
+	  <% while $i < @gpacalculate.length  do %>
+         <tr> 
+           <td>		 
+			  Subject : 
+			    </td>
+				<td>
+				   <% @sub[$i].each do |subject_name| %>
+					   <%= subject_name.name %>
+						 <% @one_sub_sum = @gpacalculate[$i+1].to_f * subject_name.credits.to_f %>
+						 <% @sum += @one_sub_sum %>
+					   <% @tot += subject_name.credits.to_f %>
+                       					   
+				   <% end %>
+				    
+				</td>
+				<td>
+			      Grade : 
+				</td>
+				<td>
+				 <%= @gpacalculate[$i+1] %>  
+                </td>
+				 
+		 </tr>
+		  <% $i = $i +2 %>
+	<% end %>
+	
+     	
+     <tr> <td>Total credits earn : </td><td><%= @sum %></td><td></td><td></td></tr>	 
+	 <tr> <td>Total credits offered :</td><td><%= @tot %></td><td></td><td></td></tr>
+	 <tr> <td>Number of Subjects :</td><td><%= $no_sub.to_f %></td><td></td><td></td></tr>
+	 <tr class="alert alert-success"><td>Your GPA :</td><td><%= @sum/@tot %></td><td></td><td></td></tr>
+	 
+	 
+	 </table>
+	  
+	  <br/>
+	  <%= link_to 'Calculate Again', gpa_enter_level_semester_path, :class => 'btn btn-primary' %>
+	 <br/><br/><br/>
+	  <br/><br/><br/>
+	  
+	  
+  </div>
+ </div>
+</div>  
+	 
+	 
