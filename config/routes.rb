@@ -1,4 +1,6 @@
 Uni::Application.routes.draw do
+  resources :trackers
+
   resources :profiles
   get '/test' => 'welcome#test' #for debuging purpose only
 

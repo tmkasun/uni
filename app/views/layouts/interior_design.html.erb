@@ -7,6 +7,14 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 		<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <!-- https://github.com/ankane/chartkick -->
 		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+
+		<% if params[:controller] == "trackers"%>
+
+			<%= javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js" %>
+			<%= stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" %>
+
+		<%end%>
+
 		<%= favicon_link_tag "fav/favicon.ico"%>
 		<%= yield :head %>
 		<%= csrf_meta_tag %>
@@ -27,7 +35,7 @@
 				<div class="navbar-inner ">
 					<ul class="nav">
 
-						<li <%= 'class=active' if params[:action] == "index" %> >
+						<li <%= 'class=active' if(params[:action] == "index" && params[:controller] == "welcome") %> >
 							<%= link_to :Search, root_path %>
 						</li>
 						<li <%= 'class=active' if params[:action] == "dictionary" %> >
@@ -39,8 +47,13 @@
 
 						</li>
 						<% if current_user.role.eql? "admin"%>
-						<li <%= 'class=active' if params[:action] == "batch_messages" %> >
+						<!-- FIXME change action name -->
+						<li <%= 'class=active' if params[:action] == "mailer" %> >
 							<%= link_to "Mailer", {controller: "/features", action: "mailer"} %>
+
+						<li <%= 'class=active' if params[:controller] == "trackers" %> >
+							<%= link_to "Track Me", trackers_path,class: "text-warning" %>
+
 							<% end %>
 						</li>
 						<li <%= 'class=active' if params[:action] == "gpa" %> >
@@ -51,7 +64,7 @@
 						<li>
 
 							<div class="search_form" style="border: 0px;margin: 0px;padding: 0px;">
-								
+
 								<%= text_field_tag :search_box,nil,name: "search_key",placeholder: "Search index number or name", autofocus: true %>
 								<span id="search_loading_animation" class="spinner" style="display: none;"><i class="icon-spin icon-refresh"></i></span>
 							</div>
@@ -107,7 +120,7 @@
 									<% if notice %>
 									<div class="alert alert-success alert-dismissable">
 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-									&times;
+										&times;
 									</button>
 									<%= notice %>
 				</div>

@@ -25,7 +25,7 @@ class FeaturesController < ApplicationController
   end
 
   def mailer
-
+    render text: "mailer"
   end
 
   def search
