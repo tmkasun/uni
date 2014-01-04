@@ -1,4 +1,5 @@
 #!/bin/bash
+#dinuka edit
 bundle install
 rake db:migrate RAILS_ENV=production
 rake assets:clean RAILS_ENV=production
