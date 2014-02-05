@@ -53,6 +53,7 @@
 	<% end %>
 	<% if can? :edit, @profile %>
 	<%= link_to "Edit" ,edit_profile_url(@profile.id) , class: "btn btn-inverse" %>
-	<% end %>
+	
 	<%= link_to 'Curriculum Vitae', @profile.cv.url, class: "btn btn-info" %>
+	<% end %>
 </div>
