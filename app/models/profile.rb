@@ -7,7 +7,8 @@ class Profile < ActiveRecord::Base
                        size: {in: 0..5.megabytes}, 
                        :content_type => { :content_type => ["image/jpg", "image/gif", "image/png","image/x-ms-bmp","image/jpeg"] } 
 
-  has_attached_file :cv, path: ":rails_root/public/system/cvs/:id/:basename.:extension", :url => "/system/cvs/:id/:basename.:extension" 
+
+  has_attached_file :cv, path: ":rails_root/public/system/cvs/:id/:hash/:basename.:extension", :url => "/system/cvs/:id/:hash/:basename.:extension", :hash_secret => "uni@knnect" 
   validates_attachment :cv, :content_type => { :content_type => ['application/pdf']}
 
 
