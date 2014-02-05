@@ -33,6 +33,7 @@ def load_student_data
   end
 end
 
+
 def import_student_profile_pictures
   images_base_path = "/home/kbsoft/Desktop/Uni_work/Level2_semester1/_4local/mm/student_photos/"
   #inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11it/"
@@ -79,6 +80,52 @@ def import_student_profile_pictures
 
 end
 
-#load_student_data
-import_student_profile_pictures
+def import_student_cvs
+  cvs_base_path = "/media/data_1/Uni_work/Level2_semester2/my_projects/uni/local_resources/cvs/"
+  #inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11it/"
+  #inet_base_url = "http://www.itfac.mrt.ac.lk/Students/Batch11itm/"
+  puts "importing students cvs"
+  all_profiles = Profile.all
+  fail_count = 0
+  sucusess_count = 0
 
+  all_profiles.each do |profile|
+
+    begin
+      # unless profile.cv.blank?
+        # puts "Skiped #{profile.registration_number}"
+        # next
+      # end
+      cv_file = File.new(cvs_base_path+profile.registration_number.upcase+".pdf")
+      profile.cv =  cv_file
+      puts profile.save
+      sucusess_count +=1
+      puts "Sucsussfully added #{profile.registration_number}"
+
+    rescue Exception => e
+      puts "fail to added #{profile.registration_number} path = #{cvs_base_path+profile.registration_number.upcase+'.pdf'} error = #{e} "
+      fail_count +=1
+    end
+
+    
+  # begin
+  # remote_photo = File.new(images_base_path+profile.registration_number.upcase+".jpg")
+  # puts "Sucsussfully added #{profile.registration_number}"
+  # profile.picture =  remote_photo
+  #  puts profile.save
+
+  #
+  # rescue Errno::ENOENT => e
+  # puts "fail to added #{profile.registration_number}"
+  # sucusess_count +=1
+  # end
+
+  end
+  puts "failed=#{fail_count}, sucsussed = #{sucusess_count}"
+
+end
+
+
+#load_student_data
+#import_student_profile_pictures
+import_student_cvs

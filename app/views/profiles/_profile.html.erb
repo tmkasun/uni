@@ -1,7 +1,7 @@
 <div class="well center">
 	<div class="absolute_center">
 		<%= image_tag @profile.picture.url(:small),class: "img-rounded img-polaroid"  %>
-
+		
 		<blockquote>
 			<p>
 				<%= @profile.common_name%>
@@ -54,4 +54,5 @@
 	<% if can? :edit, @profile %>
 	<%= link_to "Edit" ,edit_profile_url(@profile.id) , class: "btn btn-inverse" %>
 	<% end %>
+	<%= link_to 'Curriculum Vitae', @profile.cv.url, class: "btn btn-info" %>
 </div>
