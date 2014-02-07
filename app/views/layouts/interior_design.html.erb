@@ -4,9 +4,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><%= @page_title ||= 'Student information system for University of moratuwa FIT (Batch 11)' %></title>
+
 		<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <!-- https://github.com/ankane/chartkick -->
 		<%= javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js" %>
-		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application"%>
 
 		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 
@@ -22,7 +23,7 @@
 		<style>
 			body {
 				padding-top: 70px;
-				padding-bottom: 70px; 
+				padding-bottom: 70px;
 			}
 		</style>
 
@@ -82,39 +83,45 @@
 
 								</li>
 
+
 							</ul>
 							<%= form_tag({controller: "features", action: "search"}, method: "post", class: "navbar-form navbar-left", role: "search", remote: true) do %>
 							<div class="form-group search_form">
-								<%= text_field_tag :search_box,nil,name: "search_key",placeholder: "Search index number or name", autofocus: true, class: "form-control" %>
+								<%= text_field_tag :search_box,nil,name: "search_key",placeholder: "Index Number/ Name", autofocus: true, class: "form-control" %>
 								<span id="search_loading_animation" class="spinner" style="display: none;"> <i class="icon-spin icon-refresh"></i></span>
 
 							</div>
 							<% end %>
 							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<a href="#">Link</a>
-								</li>
 
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="float: left;font-size: 12pt;color: #AA45BB"> <%= current_user.profile.try(:common_name) || current_user.registration_number  %> <b class="caret"></b> </a>
 									<ul class="dropdown-menu">
 										<li>
 											<%= link_to profile_path(current_user.profile) do %>
-											<i class="icon-user"></i> Profile
+											<span class="glyphicon glyphicon-user"></span> Profile
 											<% end %>
 										</li>
 										<li>
-											<a href="/help/support"><i class="icon-envelope"></i> Contact Support</a>
+											<a href="/help/support">
+												
+												<span class="glyphicon glyphicon-envelope"></span>
+											 Contact Support</a>
 										</li>
 										<li class="divider"</li>
 
 										<% if current_user.role.eql? "admin" %>
 										<li>
-										<a href="/user/register"><i class="icon-wrench"></i> <span class="text-warning">Manage Users</span></a>
+										<a href="/user/register">
+											<span class="glyphicon glyphicon-wrench"></span>
+											<span class="text-warning">Manage Users</span></a>
 										</li>
 
 										<li>
-										<a href="/profile/new"><i class="icon-cog"></i> <span class="text-warning">Manage Profiles</span></a>
+										<a href="/profile/new">
+											<span class="glyphicon glyphicon-align-justify"></span>
+											
+											 <span class="text-warning">Manage Profiles</span></a>
 										</li>
 
 										<li class="divider"</li>
@@ -122,7 +129,8 @@
 										<% end %>
 										<li>
 										<%= link_to(destroy_user_session_path, :method => :delete) do  %>
-										<i class="icon-off"></i> Logout
+										
+										<span class="glyphicon glyphicon-off"></span> Logout
 										<% end %>
 										</li>
 
@@ -132,140 +140,139 @@
 										</ul>
 										</div><!-- /.navbar-collapse -->
 										</div><!-- /.container-fluid -->
-										</nav>
-										</div>
-										<div class="row">
-											<div class="to_messages">
+				</nav>
+			</div>
+			<div class="row">
+				<div class="to_messages">
 
-												<% if notice %>
-												<div class="alert alert-success alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<%= notice %>
-												</div>
+					<% if notice %>
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<%= notice %>
+					</div>
 
-												<% end %>
+					<% end %>
 
-												<% if alert %>
-												<div class="alert alert-error alert-dismissable">
-													<%= alert %>
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<%= alert %>
-												</div>
-												<% end %>
+					<% if alert %>
+					<div class="alert alert-error alert-dismissable">
+						<%= alert %>
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<%= alert %>
+					</div>
+					<% end %>
 
-												<% if flash[:alert_success] %>
+					<% if flash[:alert_success] %>
 
-												<div class="alert alert-success alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<strong>Success </strong><%= flash[:alert_success] %>
-													<% flash[:alert_success] = nil%>
-												</div>
-												<%end%>
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<strong>Success </strong><%= flash[:alert_success] %>
+						<% flash[:alert_success] = nil%>
+					</div>
+					<%end%>
 
-												<% if flash[:alert_info] %>
+					<% if flash[:alert_info] %>
 
-												<div class="alert alert-info alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<strong>Info:</strong><%= flash[:alert_info] %>
-													<% flash[:alert_info] = nil%>
-												</div>
-												<%end%>
+					<div class="alert alert-info alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<strong>Info:</strong><%= flash[:alert_info] %>
+						<% flash[:alert_info] = nil%>
+					</div>
+					<%end%>
 
-												<% if flash[:alert_warning] %>
+					<% if flash[:alert_warning] %>
 
-												<div class="alert alert-warning alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<strong>Warning!</strong> <%= flash[:alert_warning]  %>
-													<% flash[:alert_warning] = nil%>
-												</div>
-												<%end%>
+					<div class="alert alert-warning alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<strong>Warning!</strong> <%= flash[:alert_warning]  %>
+						<% flash[:alert_warning] = nil%>
+					</div>
+					<%end%>
 
-												<% if flash[:alert_danger] %>
+					<% if flash[:alert_danger] %>
 
-												<div class="alert alert-danger alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-														&times;
-													</button>
-													<strong>Danger!</strong><%= flash[:alert_danger] %>
-													<% flash[:alert_danger] = nil%>
-												</div>
-												<%end%>
+					<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<strong>Danger!</strong><%= flash[:alert_danger] %>
+						<% flash[:alert_danger] = nil%>
+					</div>
+					<%end%>
 
-											</div>
+				</div>
 
-										</div>
-						</div>
+			</div>
+		</div>
 
-						<div class="wrapper" >
-							<% if flash[:message] %>
-							<div class="alert">
-								<label style="color: red">Message: <%= flash[:message]%></label>
-							</div>
-							<% end %>
+		<div class="wrapper" >
+			<% if flash[:message] %>
+			<div class="alert">
+				<label style="color: red">Message: <%= flash[:message]%></label>
+			</div>
+			<% end %>
 
-							<div id="yield_content">
-								<%= yield %>
-								
-							</div>
+			<div id="yield_content">
+				<%= yield %>
 
-						</div>
-						
-						
-												<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-							<div class="container">
+			</div>
 
-								<div class="navbar-inner">
-									<ul class="nav navbar-nav">
-										<li>
-											<a href="#" >&copy; 2013 SiS</a>
-										</li>
+		</div>
 
-										<li>
-											<a href="/about">About</a>
-										</li>
+		<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<div class="container">
 
-										<li>
-											<a href="/about/contact">Contact</a>
-										</li>
+				<div class="navbar-inner">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#" >&copy; 2013 SiS</a>
+						</li>
 
-										<li>
-											<a href="#">Blog</a>
-										</li>
+						<li>
+							<a href="/about">About</a>
+						</li>
 
-										<li>
-											<a href="http://status.uni.knnect.com">Status</a>
-										</li>
+						<li>
+							<a href="/about/contact">Contact</a>
+						</li>
 
-										<li>
-											<a href="//dev.uni.knnect.com/">API</a>
-										</li>
+						<li>
+							<a href="#">Blog</a>
+						</li>
 
-										<li>
-											<a href="#">Help</a>
-										</li>
+						<li>
+							<a href="http://status.uni.knnect.com">Status</a>
+						</li>
 
-										<li>
-											<a href="/tos">Terms</a>
-										</li>
+						<li>
+							<a href="//dev.uni.knnect.com/">API</a>
+						</li>
 
-										<li>
-											<a href="/privacy">Privacy</a>
-										</li>
-									</ul>
-								</div>
+						<li>
+							<a href="#">Help</a>
+						</li>
 
-							</div>
-						</nav>
+						<li>
+							<a href="/tos">Terms</a>
+						</li>
+
+						<li>
+							<a href="/privacy">Privacy</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
 
 	</body>
 </html>
