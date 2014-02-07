@@ -2,9 +2,8 @@ source 'https://rubygems.org'
 #this is for test
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"  #Twitter Bootstrap for Rails 3.1 Asset Pipeline (Updated to Bootstrap 2)
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'bootstrap-sass'                      #bootstrap-sass is a Sass-powered version of Bootstrap, ready to drop right into your Sass powered applications.
 gem 'rails', '4.0.0'
 
 gem 'coffee-rails', '~> 4.0.0'

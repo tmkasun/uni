@@ -3,53 +3,81 @@
 <meta name="keywords" content="student information, moratuwa, batch ,registration number, phone number, gpa, " />
 <% end %>
 
-<div class="center">
-	<h3 class="shadow" > Welcome to Student information system </h3>
-</div>
+<style>
+	/*==================================================
+	 * Effect 8
+	 * ===============================================*/
+	.effect8 {
+		position: relative;
+		-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	}
+	.effect8:before, .effect8:after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+		-moz-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+		box-shadow: 0 0 20px rgba(0,0,0,0.8);
+		top: 10px;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		-moz-border-radius: 100px /10px;
+		border-radius: 100px /10px;
+	}
+	.effect8:after {
+		right: 10px;
+		left: auto;
+		-webkit-transform: skew(8deg) rotate(3deg);
+		-moz-transform: skew(8deg) rotate(3deg);
+		-ms-transform: skew(8deg) rotate(3deg);
+		-o-transform: skew(8deg) rotate(3deg);
+		transform: skew(8deg) rotate(3deg);
+	}
+</style>
 
-<div class="container center" >
-	<div class="row">
-		<!-- text-center -->
-		<div class="span6 loging_n_register_div">
-			<h4 class="shadow" style="text-align: center;">Sign in</h4>
+<div class="row fixer">
 
+	<div class="col-md-6 col-md-offset-3 text-center">
+		<h3> Welcome to Student information system </h3>
+	</div>
+	<div class="row fixer">
+		<div class="col-md-6 col-md-offset-3 effect8" style="background-color: #D9D9D9;" >
+			<br />
 			<%= form_for resource, :as => resource_name, :url => session_path(resource_name) ,html: {class: "form-horizontal"}  do |f| %>
 
-			<div class="control-group input-append">
-				<%= f.label :registration_number, class: "control-label" %>
-				<div class="controls">
-					<%= f.text_field :registration_number, :autofocus => true, placeholder: "Index number" %>
-
-					<br />
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">Index Number</label>
+				<div class="col-sm-10">
+					<%= f.text_field :registration_number, :autofocus => true, placeholder: "Index number", class: "form-control" %>
 				</div>
 			</div>
-
-			<div class="control-group">
-
-				<%= f.label :password, class: "control-label" %>
-				<div class="controls">
-					<div>
-						<%= f.password_field :password, placeholder: "Password" %>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-10">
+					<%= f.password_field :password, placeholder: "Password",class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<% if devise_mapping.rememberable? -%>
+					<div class="checkbox">
+						<%= f.label :remember_me %>
+						<%= f.check_box :remember_me %>
 					</div>
-				<% if devise_mapping.rememberable? -%>
-					<%= f.check_box :remember_me %>
-					<%= f.label :remember_me %>
-				<% end %>
 
-  
+					<% end %>
+					<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
+
 				</div>
 
 			</div>
-		
-			<%= submit_tag "Log in" , class: "btn btn-primary", id: "signin"%>
-
-
 			<% end %>
 
 		</div>
 
 	</div>
+
 </div>
-
-<a style="position: absolute;bottom: 0px;float: right;color: #898989;font-size: 10pt;">V 1.5 </a><a style="position: absolute;bottom: 0px;float: right;right: 0px;color: #898989;font-size: 10pt;"><!-- &copy;-ḱß﹩◎ƒ☂ --> </a>
-

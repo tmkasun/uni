@@ -7,15 +7,62 @@
 		<%= csrf_meta_tags %>
 		<%= yield :head%>
 		<meta charset="UTF-8">
+
+		<style>
+			body {
+				background: radial-gradient(circle, rgb(148 210, 248), rgb(58, 146, 200)) repeat scroll 0% 0% transparent;
+				background-color: transparent;
+				background-image: radial-gradient(circle, rgb(148, 210, 248), rgb(58, 146, 200));
+				background-repeat: repeat;
+				background-attachment: scroll;
+				background-position: 0% 0%;
+				background-clip: border-box;
+				background-origin: padding-box;
+				background-size: auto auto;
+				background: radial-gradient(circle, rgb(148, 210, 248), rgb(58, 146, 200)) repeat scroll 0% 0% transparent;
+				background-color: transparent;
+				background-image: radial-gradient(circle, rgb(148, 210, 248), rgb(58, 146, 200));
+				background-repeat: repeat;
+				background-attachment: scroll;
+				background-position: 0% 0%;
+				background-clip: border-box;
+				background-origin: padding-box;
+				background-size: auto auto;
+				background: radial-gradient(circle, rgb(148, 210, 248), rgb(58, 146, 200)) repeat scroll 0% 0% transparent;
+				background-color: transparent;
+				background-image: radial-gradient(circle, rgb(148, 210, 248), rgb(58, 146, 200));
+				background-repeat: repeat;
+				background-attachment: scroll;
+				background-position: 0% 0%;
+				background-clip: border-box;
+				background-origin: padding-box;
+				background-size: auto auto;
+			}
+			.fixer {
+				padding: 0 15px;
+				margin: 0 -15px;
+			}
+		</style>
+
 	</head>
 	<body>
-<% if notice %>
-  <p class="alert alert-notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-error"><%= alert %></p>
-<% end %>
-		<%= yield %>
+		<div class="container-fluid">
+			<div class="row fixer">
+				<div class="col-md-12">
+					<% if notice %>
+					<p class="alert alert-notice">
+						<%= notice %>
+					</p>
+					<% end %>
+					<% if alert %>
+					<p class="alert alert-error">
+						<%= alert %>
+					</p>
+					<% end %>
 
+				</div>
+			</div>
+			<%= yield %>
+		</div>
 	</body>
 </html>
