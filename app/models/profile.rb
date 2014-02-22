@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   
   STREAMS = %w[math biology commerce arts] #http://stackoverflow.com/questions/1274675/ruby-what-does-warray-mean --> http://www.zenspider.com/Languages/Ruby/QuickRef.html#4
-  
+  has_one :internship 
   has_attached_file :picture , styles: {small: "150x150>"},default_url: "profile/default-avatar.png" 
   validates_attachment :picture,
                        size: {in: 0..5.megabytes}, 

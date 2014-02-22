@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="input-group">
 					<span class="input-group-addon btn-default">First Name</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.common_name %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.common_name %>' >
 				</div>
 
 			</div>
@@ -52,14 +52,14 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Full Name</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.name %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.name %>' >
 				</div>
 			</div>
 			<div class="row">
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Registration Number</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.registration_number %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.registration_number %>' >
 				</div>
 			</div>
 
@@ -67,7 +67,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Phone Number</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.phone_number %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.phone_number %>' >
 				</div>
 			</div>
 
@@ -75,7 +75,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">School</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.school %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.school %>' >
 				</div>
 
 			</div>
@@ -83,7 +83,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">A/L</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.al_stream %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.al_stream %>' >
 				</div>
 			</div>
 
@@ -91,7 +91,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Gender</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.gender %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.gender %>' >
 				</div>
 			</div>
 
@@ -99,9 +99,17 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Course</span>
-					<input type="text" class="form-control" disabled="true" value= <%= @profile.degree %> >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.degree %>' >
 				</div>
 
+			</div>
+
+			<div class="row">
+
+				<div class="input-group has-success ">
+					<span class="input-group-addon btn-default">Internship @</span>
+					<input type="text" class="form-control " disabled="true" value= '<%= ( @profile.internship.company_name if @profile.internship ) || "Pending" %>' >
+				</div>
 			</div>
 
 		</div>
