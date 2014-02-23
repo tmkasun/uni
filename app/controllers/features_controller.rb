@@ -27,7 +27,11 @@ class FeaturesController < ApplicationController
   def mailer
     render text: "mailer"
   end
-
+  
+  def internships
+    
+  end
+  
   def search
     search_key = params[:search_key]
     if params[:search_key].length < 2

@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="input-group">
 					<span class="input-group-addon btn-default">First Name</span>
-					<input type="text" class="form-control" disabled="true" value= '<%= @profile.common_name %>' >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.common_name.capitalize %>' >
 				</div>
 
 			</div>
@@ -75,7 +75,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">School</span>
-					<input type="text" class="form-control" disabled="true" value= '<%= @profile.school %>' >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.school.capitalize %>' >
 				</div>
 
 			</div>
@@ -83,7 +83,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">A/L</span>
-					<input type="text" class="form-control" disabled="true" value= '<%= @profile.al_stream %>' >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.al_stream.capitalize %>' >
 				</div>
 			</div>
 
@@ -91,7 +91,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Gender</span>
-					<input type="text" class="form-control" disabled="true" value= '<%= @profile.gender %>' >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.gender.capitalize %>' >
 				</div>
 			</div>
 
@@ -99,16 +99,16 @@
 
 				<div class="input-group">
 					<span class="input-group-addon btn-default">Course</span>
-					<input type="text" class="form-control" disabled="true" value= '<%= @profile.degree %>' >
+					<input type="text" class="form-control" disabled="true" value= '<%= @profile.degree.upcase %>' >
 				</div>
 
 			</div>
 
 			<div class="row">
-
+				
 				<div class="input-group has-success ">
-					<span class="input-group-addon btn-default">Internship @</span>
-					<input type="text" class="form-control " disabled="true" value= '<%= ( @profile.internship.company_name if @profile.internship ) || "Pending" %>' >
+					<span class="input-group-addon btn-default">Internship @</span>	
+					<input type="text" class="form-control " disabled="true" value= '<%= ( @profile.internship.company_name.capitalize if @profile.internship ) || "Pending" %>' >
 				</div>
 			</div>
 

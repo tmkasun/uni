@@ -27,7 +27,7 @@
 			}
 		</style>
 
-        </head>
+	</head>
 	<body>
 		<% if false%>
 
@@ -70,8 +70,8 @@
 								</li>
 								<% if current_user.role.eql? "admin"%>
 								<!-- FIXME change action name -->
-								<li <%= 'class=active' if params[:action] == "mailer" %> >
-									<%= link_to "Mailer", {controller: "/features", action: "mailer"} %>
+								<li <%= 'class=active' if params[:action] == "internships" %> >
+									<%= link_to "Internships", {controller: "/features", action: "internships"} %>
 
 								<li <%= 'class=active' if params[:controller] == "trackers" %> >
 									<%= link_to "Track Me", trackers_path,class: "text-warning" %>
@@ -82,7 +82,6 @@
 									<%= link_to "GPA", gpa_enter_level_semester_path %>
 
 								</li>
-
 
 							</ul>
 							<%= form_tag({controller: "features", action: "search"}, method: "post", class: "navbar-form navbar-left", role: "search", remote: true) do %>
@@ -103,25 +102,22 @@
 											<% end %>
 										</li>
 										<li>
-											<a href="/help/support">
-												
-												<span class="glyphicon glyphicon-envelope"></span>
-											 Contact Support</a>
+											<a href="/help/support"> <span class="glyphicon glyphicon-envelope"></span> Contact Support</a>
 										</li>
 										<li class="divider"</li>
 
 										<% if current_user.role.eql? "admin" %>
 										<li>
 										<a href="/user/register">
-											<span class="glyphicon glyphicon-wrench"></span>
-											<span class="text-warning">Manage Users</span></a>
+										<span class="glyphicon glyphicon-wrench"></span>
+										<span class="text-warning">Manage Users</span></a>
 										</li>
 
 										<li>
 										<a href="/profile/new">
-											<span class="glyphicon glyphicon-align-justify"></span>
-											
-											 <span class="text-warning">Manage Profiles</span></a>
+										<span class="glyphicon glyphicon-align-justify"></span>
+
+										<span class="text-warning">Manage Profiles</span></a>
 										</li>
 
 										<li class="divider"</li>
@@ -129,7 +125,7 @@
 										<% end %>
 										<li>
 										<%= link_to(destroy_user_session_path, :method => :delete) do  %>
-										
+
 										<span class="glyphicon glyphicon-off"></span> Logout
 										<% end %>
 										</li>
@@ -139,10 +135,24 @@
 
 										</ul>
 										</div><!-- /.navbar-collapse -->
-										</div><!-- /.container-fluid -->
+						</div><!-- /.container-fluid -->
 				</nav>
 			</div>
 			<div class="row">
+				<script>
+				$(document).ready(function(){
+					
+					$('.to_messages > .alert').hide();
+					$('.to_messages > .alert').fadeIn(1500, function() {
+						$(this).delay(5000).fadeOut(1000, function() {
+							// $('.alert').fadeIn();
+						});
+					});
+
+					
+				});
+					
+				</script>
 				<div class="to_messages">
 
 					<% if notice %>
