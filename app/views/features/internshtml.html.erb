@@ -1,0 +1,84 @@
+<div class="row">
+	<div class="col-md-3 col-md-offset-4">
+		<%= link_to "Back", :back, class: "btn btn-default btn-lg btn-block" %>
+
+	</div>
+</div>
+<br />
+<div class="container">
+	<% count = 0 %>
+	<% @interns.each do |intern| %>
+	<% count += 1%>
+
+	<div class="<%= 'row' if count%2 == 0 %>">
+		<div class="col-md-4 col-md-offset-1">
+			<div class="panel panel-info">
+
+				<div class="panel-heading">
+					<%= intern.profile.name%>
+				</div>
+				<div class="panel-body text-center">
+
+					<div class="col-md-8">
+						<%= link_to intern.profile do %>
+
+						<%= image_tag intern.profile.picture.url(:small),class: "img-rounded img-polaroid"  %>
+						<% end %>
+						<p class="text-info">
+							<%= intern.profile.common_name %> <%= intern.profile.name %>
+						</p>
+					</div>
+
+					<div class="col-md-8">
+						<% if can? :edit, intern.profile %>
+						<button class="btn btn-info" data-toggle="modal" data-target="#cvModal">
+							Curriculum Vitae
+						</button>
+						<% end %>
+						<embed style="display: none" src="<%= intern.profile.cv.url %>" width="80%" height='500'>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="input-group has-success ">
+						<span class="input-group-addon btn-default">Internship @</span>
+						<input type="text" class="form-control " disabled="true" value= '<%= ( intern.profile.internship.company_name.capitalize if intern.profile.internship ) || "Pending" %>' >
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="cvModal" tabindex="-1" role="dialog" aria-labelledby="CvLable" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">Curriculum Vitae <small><%= intern.profile.name %></small></h4>
+						</div>
+						<div class="modal-body">
+
+							<embed src= <%= intern.profile.cv.url %> width="100%" height='500'>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">
+								Close
+							</button>
+							<%= link_to 'Download', intern.profile.cv.url, class: "btn btn-info" %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<% end %>
+
+</div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-4">
+		<%= link_to "Back", :back, class: "btn btn-default btn-lg btn-block" %>
+
+	</div>
+</div>

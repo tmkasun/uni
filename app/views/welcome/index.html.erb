@@ -96,7 +96,7 @@
 <div class="container">
 	<div class="row text-center">
 		<div class="col-md-12">
-			<div class="alert alert-success">Congrats 			<%= link_to @latestRecord do %><%= @latestRecord.common_name %><% end %>! for getting selected to <%= @latestRecord.internship.company_name  %></div>
+			<div class="alert alert-success">Congrats 			<%= link_to @latestRecord do %><%= @latestRecord.common_name %><% end %>! for getting selected to <a data-toggle="tooltip" data-placement="top" title="Coworkers" href="/features/interns?company_name=<%= @latestRecord.internship.company_name  %>"><%= @latestRecord.internship.company_name  %></a></div>
 		</div>
 	</div>
 </div>

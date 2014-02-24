@@ -70,8 +70,8 @@
 								</li>
 								
 								<!-- FIXME change action name -->
-								<li <%= 'class=active' if params[:action] == "internships" %> >
-									<%= link_to "Internships", {controller: "/features", action: "internships"} %>
+								<li  <%= 'class=active' if params[:action] == "internships" %> >
+								        <%= link_to "Internships", {controller: "/features", action: "internships"} %> 
 
 								<li <%= 'class=active' if params[:controller] == "trackers" %> >
 									<%= link_to "Track Me", trackers_path,class: "text-warning" %>

@@ -1,5 +1,5 @@
 class FeaturesController < ApplicationController
-  
+
   layout :which_layout
   def which_layout
     #because dictionary action is testing action
@@ -27,11 +27,11 @@ class FeaturesController < ApplicationController
   def mailer
     render text: "mailer"
   end
-  
+
   def internships
-    
+
   end
-  
+
   def search
     search_key = params[:search_key]
     if params[:search_key].length < 2
@@ -52,6 +52,20 @@ class FeaturesController < ApplicationController
     authorize! :create, User #https://github.com/ryanb/cancan/wiki/Controller-Authorization-Example and https://github.com/ryanb/cancan/wiki/authorizing-controller-actions
   end
 
+  def interns_by_company
+    
+    company_name = params[:company_name].downcase
+
+    @interns = Internship.where("lower(company_name) = ?", company_name)
+    respond_to do |format|
+      format.js {render "interns"}
+      format.html {render "internshtml"}
+      format.mobile {render "search_mobile"}
+      format.json {render json: @interns }
+    end
+  #render "search_result"
+  end
+
   def create_user
     authorize! :create, User
     # render text: allowed_registration_params
@@ -69,11 +83,13 @@ class FeaturesController < ApplicationController
       flash[:alert_warning] = new_user.errors.full_messages
       render 'add_user'
     end
-    
+
   end
 
   protected
+
   def allowed_registration_params
     params.require(:user).permit(:registration_number,:password,:password_confirmation,:role)
   end
+
 end

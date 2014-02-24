@@ -20,6 +20,7 @@ Uni::Application.routes.draw do
   scope 'features/' do
     get 'mailer' => 'features#mailer'
     get 'internships' => 'features#internships'
+    get 'interns' => 'features#interns_by_company'
     get 'dictionary' => 'features#dictionary'
     get 'education' => 'features#education'
     get 'batch_messages' => 'features#batch_messages'
