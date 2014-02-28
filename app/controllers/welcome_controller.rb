@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
 
   def index
     @page_title = "Search for students information"
-    @latestRecord = Internship.last 5
+    @latestRecord = Profile.find Internship.last.profile_id
     respond_to do |format|
       format.html
       format.mobile
