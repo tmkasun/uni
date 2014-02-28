@@ -29,6 +29,7 @@ class FeaturesController < ApplicationController
   end
 
   def internships
+    @latestRecords = Internship.last 5
 
   end
 
@@ -53,7 +54,7 @@ class FeaturesController < ApplicationController
   end
 
   def interns_by_company
-    
+
     company_name = params[:company_name].downcase
 
     @interns = Internship.where("lower(company_name) = ?", company_name)

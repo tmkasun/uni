@@ -22,7 +22,7 @@
 </div>
 
 <div class="row text-center">
-	<div class="col-md-6 col-md-offset-3" >
+	<div class="col-md-6" >
 		<%= javascript_include_tag "jquery.mCustomScrollbar.concat.min"%>
 		<script>
 			$(".list-group").mCustomScrollbar();
@@ -39,7 +39,20 @@
 	</div>
 
 	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Recently selected students
+			</div>
+			<div class="panel-body">
+				<% @latestRecords.each do |record| %>
+				<div class="well">
+					<%= link_to record.profile do %><%= record.profile.common_name %><% end %> got selected to <a data-toggle="tooltip" data-placement="top" title="Show interns" href="/features/interns?company_name=<%= record.company_name  %>"><%= record.company_name  %></a>
+				</div>
 
+				<% end %>
+
+			</div>
+		</div>
 	</div>
 
 </div>
