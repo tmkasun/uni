@@ -1,5 +1,8 @@
-print "ok1"
+#! /usr/bin/python
 
+"""
+Simple HTML parser to grab the information appears on selected students page in industry traning web application
+"""
 import urllib2
 import re
 import psycopg2
