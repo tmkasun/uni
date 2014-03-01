@@ -48,3 +48,4 @@ config/devise_config/fb.yml
 config/devise_config/google.yml
 db/sphinx/*
 dinuka/
+intern.conf
