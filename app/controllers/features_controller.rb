@@ -30,6 +30,7 @@ class FeaturesController < ApplicationController
 
   def internships
     @latestRecords = Internship.last 5
+    @latestRecords.reverse!
 
   end
 

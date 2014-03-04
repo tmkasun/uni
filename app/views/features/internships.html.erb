@@ -10,8 +10,8 @@
 	<div class="row ">
 		<div class="col-md-6">
 
-			<%= pie_chart(Internship.group(:company_name).count(:company_name)) %>
-
+			<% pie_chart(Internship.group(:company_name).count(:company_name)) %>
+                        <%= column_chart Internship.group(:company_name).count(:company_name) %>
 		</div>
 		<div class="col-md-6">
 			<%= pie_chart({"Pending" => (203 - Internship.count(:id)), "Selected" => Internship.count(:id)}) %>
