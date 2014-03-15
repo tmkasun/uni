@@ -47,6 +47,7 @@ def getProfileID(registration_number):
 def insertToDB(record):
     status = False
     profileID = getProfileID(record[0])
+    print "*******************",record
     companyName = record[1]
     #print companyName,profileID
     query = """insert into internships(profile_id,company_name) values({},'{}')""".format(profileID,companyName)
@@ -72,7 +73,7 @@ rawContent = selectedStudentList.read()
 rawHTMLLines = rawContent.split("\n")
 
 insideRow = False
-compiledPattern = re.compile('>[\w^&^;^ ]+<')
+compiledPattern = re.compile('>[\w ^& ^; ^-]+<')
 records = []
 validRecord = False
 for line in rawHTMLLines:
