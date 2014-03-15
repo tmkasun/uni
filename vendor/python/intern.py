@@ -47,7 +47,6 @@ def getProfileID(registration_number):
 def insertToDB(record):
     status = False
     profileID = getProfileID(record[0])
-    print "*******************",record
     companyName = record[1]
     #print companyName,profileID
     query = """insert into internships(profile_id,company_name) values({},'{}')""".format(profileID,companyName)
