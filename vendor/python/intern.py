@@ -42,11 +42,15 @@ def getProfileID(registration_number):
     registration_number = registration_number.upper()
     cursor.execute("""select id from profiles where registration_number = '{}' """.format(registration_number))
     result = cursor.fetchall()
+    if len(result) == 0:
+	    return False
     return result[0][0]
 
 def insertToDB(record):
     status = False
     profileID = getProfileID(record[0])
+    if not profileID:
+	    return False
     companyName = record[1]
     #print companyName,profileID
     query = """insert into internships(profile_id,company_name) values({},'{}')""".format(profileID,companyName)
