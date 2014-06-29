@@ -36,12 +36,34 @@
 		-o-transform: skew(8deg) rotate(3deg);
 		transform: skew(8deg) rotate(3deg);
 	}
+	.apps-canvas {
+		background-color: #0073E5;
+		background-image: -ms-radial-gradient(center top,ellipse cover,#00A6FE 0,#0073E5 100%);
+		background-image: -moz-radial-gradient(center top,ellipse farthest-corner,#00a6fe 0,#0073e5 100%);
+		background-image: -o-radial-gradient(center top,ellipse cover,#00A6FE 0,#0073E5 100%);
+		background-image: -webkit-gradient(radial,center top,0,center top,559,color-stop(0,#00A6FE),color-stop(1,#0073E5));
+		background-image: -webkit-radial-gradient(center top,ellipse cover,#00A6FE 0,#0073E5 100%);
+		-moz-box-shadow: 0 -6px 5px -6px rgba(0,0,0,.6) inset, 0 7px 5px -6px rgba(0,0,0,.5) inset;
+		-webkit-box-shadow: 0 -6px 5px -6px rgba(0,0,0,.6) inset, 0 7px 5px -6px rgba(0,0,0,.5) inset;
+		box-shadow: 0 -6px 5px -6px rgba(0,0,0,.6) inset, 0 7px 5px -6px rgba(0,0,0,.5) inset;
+	}
+
+	.inner {
+		margin: auto;
+		width: 100%;
+		padding: 1em 0;
+	}
+
 </style>
 
-<div class="row fixer">
+<div class="row">
 
-	<div class="col-md-6 col-md-offset-3 text-center">
-		<h3> Welcome to Student information system </h3>
+	<div class="col-md-12 text-center" style="padding-bottom: 5%;">
+		<div class="apps-canvas">
+			<div class="inner">
+				<h2 style="text-shadow: 1px 1px rgba(0,0,0,.3);color: white;"> Welcome to Student information system </h2>
+			</div>
+		</div>
 	</div>
 	<div class="row fixer">
 		<div class="col-md-6 col-md-offset-3 effect8" style="background-color: #D9D9D9;" >
